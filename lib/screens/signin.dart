@@ -27,7 +27,7 @@ class _formLogin extends StatefulWidget {
 class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
-  String status = 'Reqiured ';
+  String status = 'Reqiured m';
   void initState() {
     controller = AnimationController(
       vsync: this,
@@ -93,7 +93,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                   return status;
               },
               cont: email,
-              s: "Enter email or number number",
+              s: "Enter email or phone number",
               obscure: false),
           SizedBox(height: 10),
           appTextForm(
