@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class appTextForm extends StatelessWidget {
-  appTextForm(
+class AppTextForm extends StatelessWidget {
+  AppTextForm(
       {this.cont,
       this.s,
       this.obscure = false,
@@ -30,11 +30,11 @@ class appTextForm extends StatelessWidget {
         helperText: warning,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.blueGrey.shade500),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(14),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.blueGrey.shade500),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(14),
         ),
       ),
     );
