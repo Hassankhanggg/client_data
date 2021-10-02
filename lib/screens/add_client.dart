@@ -4,10 +4,8 @@ import 'package:client_data/utils/PostClient.dart';
 import 'package:client_data/utils/appTextForm.dart';
 import 'package:client_data/utils/customButton.dart';
 import 'package:client_data/utils/default.dart';
-import 'package:client_data/utils/model.dart';
 import 'package:client_data/utils/modelclient.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
 
 class addClient extends StatelessWidget {
   @override
