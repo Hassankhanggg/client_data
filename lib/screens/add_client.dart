@@ -6,7 +6,6 @@ import 'package:client_data/utils/customButton.dart';
 import 'package:client_data/utils/default.dart';
 import 'package:client_data/utils/model.dart';
 import 'package:client_data/utils/modelclient.dart';
-import 'package:client_data/utils/post.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 
@@ -15,7 +14,7 @@ class addClient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: defaultWidget(addDetailClient(), true, true, true),
+      body: DefaultWidget(addDetailClient(), true, true, true),
     );
   }
 }
@@ -63,16 +62,16 @@ class _addDetailClientState extends State<addDetailClient>
 
     return Column(
       children: [
-        appTextForm(cont: name, s: "Enter client name", obscure: false),
+        AppTextForm(cont: name, s: "Enter client name", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: ports, s: "Available ports", obscure: false),
+        AppTextForm(cont: ports, s: "Available ports", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: dest, s: "Destination", obscure: false),
+        AppTextForm(cont: dest, s: "Destination", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: offer, s: "offered rate", obscure: false),
+        AppTextForm(cont: offer, s: "offered rate", obscure: false),
         SizedBox(height: 30),
         SizedBox(height: 40),
-        customButton(
+        CustomButton(
             inProgress
                 ? CircularProgressIndicator(
                     value: controller.value,
