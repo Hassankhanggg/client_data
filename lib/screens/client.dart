@@ -12,11 +12,13 @@ import 'package:client_data/utils/post.dart';
 import 'package:flutter/material.dart';
 
 class ClientScreen extends StatelessWidget {
+  ClientScreen(this.userID);
+  String userID;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // key: _scaffold,
-      body: defaultWidget(Client(), false, true, true),
+      body: DefaultWidget(Client(userID: userID), false, true, true),
     );
   }
 }
@@ -24,6 +26,8 @@ class ClientScreen extends StatelessWidget {
 BuildContext globalContext;
 
 class Client extends StatelessWidget {
+  Client({this.userID});
+  String userID;
   @override
   Widget build(BuildContext context) {
     // Stream<List<DonaloPost>> l;
@@ -88,6 +92,7 @@ class Client extends StatelessWidget {
                                     : width / 1000 * 1.5,
                           ),
                           itemBuilder: (context, index) => ItemCardClient(
+                                userID: userID,
                                 clientproduct: data[index],
                               ));
                     } else {
@@ -107,6 +112,6 @@ class Client extends StatelessWidget {
 
   void func() {
     Navigator.push(
-        (globalContext), MaterialPageRoute(builder: (context) => add_item()));
+        (globalContext), MaterialPageRoute(builder: (context) => addClient()));
   }
 }

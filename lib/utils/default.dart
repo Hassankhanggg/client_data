@@ -1,12 +1,12 @@
 import 'package:client_data/utils/Navbar.dart';
 import 'package:flutter/material.dart';
 
-class defaultWidget extends StatelessWidget {
+class DefaultWidget extends StatelessWidget {
   bool showBackicon;
   Widget widget;
   bool showimage;
   bool showlogout;
-  defaultWidget(@required this.widget, this.showimage, this.showlogout,
+  DefaultWidget(@required this.widget, this.showimage, this.showlogout,
       this.showBackicon);
 
   @override

@@ -12,7 +12,7 @@ class add_item extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: defaultWidget(addDetail(), true, true, true),
+      body: DefaultWidget(addDetail(), true, true, true),
     );
   }
 }
@@ -60,16 +60,16 @@ class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
 
     return Column(
       children: [
-        appTextForm(cont: name, s: "Enter your name", obscure: false),
+        AppTextForm(cont: name, s: "Enter your name", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: ports, s: "Available ports", obscure: false),
+        AppTextForm(cont: ports, s: "Available ports", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: dest, s: "Destination", obscure: false),
+        AppTextForm(cont: dest, s: "Destination", obscure: false),
         SizedBox(height: 30),
-        appTextForm(cont: offer, s: "offered rate", obscure: false),
+        AppTextForm(cont: offer, s: "offered rate", obscure: false),
         SizedBox(height: 30),
         const SizedBox(height: 40),
-        customButton(
+        CustomButton(
             inProgress
                 ? CircularProgressIndicator(
                     value: controller.value,

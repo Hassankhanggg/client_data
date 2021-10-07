@@ -1,3 +1,4 @@
+import 'package:client_data/screens/UserScreen.dart';
 import 'package:client_data/screens/client.dart';
 import 'package:client_data/screens/supplier.dart';
 import 'package:client_data/utils/PostClient.dart';
@@ -15,7 +16,7 @@ class addClient extends StatelessWidget {
       body: DefaultWidget(addDetailClient(), true, true, true),
     );
   }
-}
+}//store user,table,
 
 TextEditingController name = TextEditingController();
 TextEditingController ports = TextEditingController();
@@ -53,7 +54,7 @@ class _addDetailClientState extends State<addDetailClient>
       await PostDataClient().post(x).then((value) {
         print('$value');
         Navigator.push(
-            (context), MaterialPageRoute(builder: (context) => ClientScreen()));
+            (context), MaterialPageRoute(builder: (context) => UserScreen()));
         inProgress = false;
       });
     }

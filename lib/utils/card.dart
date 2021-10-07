@@ -1,61 +1,61 @@
 import 'package:flutter/material.dart';
 
-class card {
+class Card {
   String name, email;
   int phone, id;
-  card({this.email, this.name, this.phone, this.id});
+  Card({this.email, this.name, this.phone, this.id});
 }
 
-List<card> cards = [
-  card(
+List<Card> cards = [
+  Card(
     name: "hassan",
     id: 1,
     email: "hassan@g.com",
     phone: 1234,
   ),
-  card(
+  Card(
     name: "razi",
     id: 2,
     email: "razi@g.com",
     phone: 12345,
   ),
-  card(
+  Card(
     name: "bashrii",
     id: 3,
     email: "bashrii@g.com",
     phone: 123456,
   ),
-  card(
+  Card(
     name: "hassan",
     id: 4,
     email: "hassan@g.com",
     phone: 1234,
   ),
-  card(
+  Card(
     name: "razi",
     id: 5,
     email: "razi@g.com",
     phone: 12345,
   ),
-  card(
+  Card(
     name: "bashrii",
     id: 6,
     email: "bashrii@g.com",
     phone: 123456,
   ),
-  card(
+  Card(
     name: "hassan",
     id: 7,
     email: "hassan@g.com",
     phone: 1234,
   ),
-  card(
+  Card(
     name: "razi",
     id: 8,
     email: "razi@g.com",
     phone: 12345,
   ),
-  card(
+  Card(
     name: "bashrii",
     id: 9,
     email: "bashrii@g.com",

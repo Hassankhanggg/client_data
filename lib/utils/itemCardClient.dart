@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 
 class ItemCardClient extends StatefulWidget {
   final DonaloPostClient clientproduct;
-  const ItemCardClient({
+  String userID;
+   ItemCardClient({
+    this.userID,
     Key key,
     this.clientproduct,
     DonaloPostClient DonaloPostClient,
@@ -73,7 +75,8 @@ class _ItemCardClientState extends State<ItemCardClient> {
                         Navigator.push(
                             (context),
                             MaterialPageRoute(
-                                builder: (context) => ClientScreen()));
+                                builder: (context) =>
+                                    ClientScreen(widget.userID)));
                         print("delete client");
                       });
                     },

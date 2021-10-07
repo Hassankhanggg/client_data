@@ -1,4 +1,5 @@
-import 'package:client_data/authentication_service.dart';
+import 'package:client_data/screens/UserScreen.dart';
+import 'package:client_data/utils/authentication_service.dart';
 import 'package:client_data/screens/select.dart';
 import 'package:client_data/screens/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -36,7 +37,7 @@ class AuthenticationWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return selectscreen();
+      return UserScreen();
     }
     return signin();
   }

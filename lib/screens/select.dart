@@ -2,29 +2,38 @@ import 'package:client_data/screens/client.dart';
 import 'package:client_data/screens/supplier.dart';
 import 'package:client_data/utils/default.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
-class selectscreen extends StatelessWidget {
-  const selectscreen({Key key}) : super(key: key);
+class SelectScreen extends StatelessWidget {
+  String userID;
+  SelectScreen({Key key, this.userID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: defaultWidget(select(), true, true, true),
+      body: DefaultWidget(select(userID: userID), true, true, true),
     );
   }
 }
 
 class select extends StatefulWidget {
-  const select();
+  String userID;
 
+  // String userID = widget.userID;
+  select({this.userID});
+  // String uID = userID;
+  //String userID = widget.userID;
   @override
-  State<select> createState() => _selectState();
+  State<select> createState() => _selectState(userID);
 }
 
 class _selectState extends State<select> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
   bool inProgress1 = false;
+
+  _selectState(String userID);
   void initState() {
     controller = AnimationController(
       vsync: this,
@@ -62,8 +71,8 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                             ))),
               onPressed: () {
                 inProgress = true;
-                Navigator.push((context),
-                    MaterialPageRoute(builder: (context) => SupplierScreen()));
+                              Navigator.push((context),
+                  MaterialPageRoute(builder: (context) => SupplierScreen(userID:widget.userID)));
                 inProgress = false;
               },
               style: ElevatedButton.styleFrom(
@@ -95,7 +104,7 @@ class _selectState extends State<select> with TickerProviderStateMixin {
             onPressed: () {
               inProgress1 = true;
               Navigator.push((context),
-                  MaterialPageRoute(builder: (context) => ClientScreen()));
+                  MaterialPageRoute(builder: (context) => ClientScreen(widget.userID)));
               inProgress1 = false;
             },
             style: ElevatedButton.styleFrom(

@@ -12,11 +12,13 @@ import 'package:flutter/material.dart';
 //   onWillPop: () async => true,
 //   child: Scaffold(
 class SupplierScreen extends StatelessWidget {
+  SupplierScreen({this.userID});
+  final String userID;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // key: _scaffold,
-      body: defaultWidget(supplier(), false, true, true),
+      body: DefaultWidget(supplier(), false, true, true),
     );
   }
 }

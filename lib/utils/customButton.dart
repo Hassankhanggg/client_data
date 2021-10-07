@@ -2,8 +2,8 @@ import 'package:client_data/utils/model.dart';
 import 'package:client_data/utils/post.dart';
 import 'package:flutter/material.dart';
 
-class customButton extends StatelessWidget {
-  customButton(this.s, this.func);
+class CustomButton extends StatelessWidget {
+  CustomButton(this.s, this.func);
   Widget s;
   Function func;
   @override

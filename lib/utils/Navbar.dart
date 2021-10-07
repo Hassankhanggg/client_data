@@ -1,4 +1,4 @@
-import 'package:client_data/authentication_service.dart';
+import 'package:client_data/utils/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 

@@ -1,6 +1,7 @@
 // import 'dart:js';
 
-import 'package:client_data/authentication_service.dart';
+import 'package:client_data/screens/UserScreen.dart';
+import 'package:client_data/utils/authentication_service.dart';
 import 'package:client_data/screens/select.dart';
 import 'package:client_data/screens/signup.dart';
 import 'package:client_data/utils/appTextForm.dart';
@@ -14,7 +15,7 @@ class signin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: defaultWidget(_formLogin(), true, false, false),
+      body: DefaultWidget(_formLogin(), true, false, false),
     );
   }
 }
@@ -85,7 +86,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
       key: _formKey,
       child: Column(
         children: [
-          appTextForm(
+          AppTextForm(
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return status;
@@ -96,7 +97,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               s: "Enter email or phone number",
               obscure: false),
           SizedBox(height: 10),
-          appTextForm(
+          AppTextForm(
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return status;
@@ -148,7 +149,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                       Navigator.push(
                           (context),
                           MaterialPageRoute(
-                              builder: (context) => selectscreen()));
+                              builder: (context) => UserScreen()));
                     else {
                       setState(() {
                         status = 'Invalid Email or Password';
@@ -172,7 +173,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
           SizedBox(
             height: 20,
           ),
-          customButton(
+          CustomButton(
               Text(
                 "Register a new account",
                 style: TextStyle(color: Colors.white),
