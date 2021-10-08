@@ -1,31 +1,31 @@
-import 'package:client_data/screens/client.dart';
-import 'package:client_data/screens/supplier.dart';
-import 'package:client_data/utils/default.dart';
+import 'package:client_data/screens/clients/client.dart';
+import 'package:client_data/screens/supplier/supplier.dart';
+import 'package:client_data/utils/default/default.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
 
 class SelectScreen extends StatelessWidget {
-  String userID;
-  SelectScreen({Key key, this.userID}) : super(key: key);
+  String currentUserID;
+  SelectScreen({Key key, this.currentUserID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DefaultWidget(select(userID: userID), true, true, true),
+      body:
+          DefaultWidget(select(currentUserID: currentUserID), true, true, true),
     );
   }
 }
 
 class select extends StatefulWidget {
-  String userID;
+  String currentUserID;
 
   // String userID = widget.userID;
-  select({this.userID});
+  select({this.currentUserID});
   // String uID = userID;
   //String userID = widget.userID;
   @override
-  State<select> createState() => _selectState(userID);
+  State<select> createState() => _selectState(currentUserID);
 }
 
 class _selectState extends State<select> with TickerProviderStateMixin {
@@ -47,6 +47,7 @@ class _selectState extends State<select> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print("select : " + widget.currentUserID);
     return Container(
       child: Column(
         children: [
@@ -71,8 +72,10 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                             ))),
               onPressed: () {
                 inProgress = true;
-                              Navigator.push((context),
-                  MaterialPageRoute(builder: (context) => SupplierScreen(userID:widget.userID)));
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => SupplierScreen(widget.currentUserID)));
                 inProgress = false;
               },
               style: ElevatedButton.styleFrom(
@@ -103,8 +106,11 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                           ))),
             onPressed: () {
               inProgress1 = true;
-              Navigator.push((context),
-                  MaterialPageRoute(builder: (context) => ClientScreen(widget.userID)));
+              Navigator.push(
+                  (context),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ClientScreen(widget.currentUserID)));
               inProgress1 = false;
             },
             style: ElevatedButton.styleFrom(

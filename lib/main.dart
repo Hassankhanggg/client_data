@@ -1,7 +1,6 @@
-import 'package:client_data/screens/UserScreen.dart';
-import 'package:client_data/utils/authentication_service.dart';
-import 'package:client_data/screens/select.dart';
-import 'package:client_data/screens/signin.dart';
+import 'package:client_data/screens/users/UserScreen.dart';
+import 'package:client_data/authentication/authentication_service.dart';
+import 'package:client_data/authentication/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
