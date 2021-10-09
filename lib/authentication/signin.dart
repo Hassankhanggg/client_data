@@ -27,7 +27,7 @@ class _formLogin extends StatefulWidget {
 class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
-  String status = 'Reqiured m';
+  String status;
   void initState() {
     controller = AnimationController(
       vsync: this,
@@ -87,10 +87,12 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
         children: [
           AppTextForm(
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return status;
-                } else
-                  return status;
+                if (value == null || value.isEmpty)
+                  return "This field is Required";
+                else if(!isEmail(email.text))
+                  return "Provide a valid Email address";
+                else
+                return status;
               },
               cont: email,
               s: "Enter email or phone number",
@@ -98,10 +100,10 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
           SizedBox(height: 10),
           AppTextForm(
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return status;
-                } else
-                  return status;
+                if (value == null || value.isEmpty)
+                  return "This is Required Field";
+                else
+                return status;
               },
               cont: password,
               s: "Password",
@@ -128,13 +130,11 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                               style: TextStyle(color: Colors.white),
                             ))),
               onPressed: () {
-                if (_formKey.currentState.validate()) {
+                if (!_formKey.currentState.validate()) {
                   // _formKey.currentState.save();
-
-                  print("if");
+                  status = null;                  
+                  return;
                 } else {
-                  print("else");
-
                   // _formKey.currentState.save();
                   inProgress = true;
                   context
@@ -143,15 +143,16 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                         email: email.text.trim(),
                         password: password.text.trim(),
                       )
-                      .then((value) {
-                    if (value == "Signed in")
+                      .then((value) async {
+                   if (value == "Signed in")
                       Navigator.push(
                           (context),
                           MaterialPageRoute(
                               builder: (context) => UserScreen()));
                     else {
                       setState(() {
-                        status = 'Invalid Email or Password';
+                        inProgress = false;
+                        status = 'Email or Password is not valid';
                       });
                     }
                   });
@@ -205,5 +206,11 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+bool isEmail(String email) {
+    Pattern pattern =
+      r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    return regex.hasMatch(email);
   }
 }
