@@ -8,7 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 
-class signup extends StatelessWidget {
+class Signup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +45,9 @@ class __signupState extends State<_signup>{
       child: Column(
         children: [
           AppTextForm(
+            onFieldSubmit: (value){ 
+              fieldSubmit(value);
+            },
             cont: name,
             s: "Name",
             obscure: false,
@@ -60,6 +63,9 @@ class __signupState extends State<_signup>{
           ),
          AppTextForm(
            cont: email,
+           onFieldSubmit: (value){ 
+              fieldSubmit(value);
+            },
            s: "Enter your Email or Phone Number",
            validator: (value){
              if (value == null || value.isEmpty)
@@ -74,7 +80,7 @@ class __signupState extends State<_signup>{
           AppTextForm(
             cont: password,
             s: "Enter your Password",
-            obscure: true,
+            obscure: true,            
             validator: (value){
               if(value == null || value.isEmpty)
               return "This is Required Field";
@@ -82,7 +88,10 @@ class __signupState extends State<_signup>{
               return "Password must be at least 6 characters";
               else
               return status;
-            },        
+            },
+            onFieldSubmit: (value){ 
+              fieldSubmit(value);
+            },               
           )
          ,
           const SizedBox(height: 40),
@@ -154,7 +163,31 @@ class __signupState extends State<_signup>{
       ),
     );
   }
-
+void fieldSubmit(value){
+               
+                if(!_formkey.currentState.validate()){
+                    status = null;
+                    return;
+                  }
+                else{
+                  create_auth().then((value) async {
+                  
+                  if (value == "Signed up") {
+                    FirebaseAuth _auth = FirebaseAuth.instance;
+                    var x = DonaloPostUser(
+                        Name: name.text,
+                        // offeredRate: int.parse(offer.text),
+                        // ports: double.parse(ports.text),
+                        userID: _auth.currentUser.uid,
+                        email: email.text);
+                    await PostDataUser().post(x).then((value) {
+                      Navigator.push((context),
+                          MaterialPageRoute(builder: (context) => UserScreen()));
+                    });
+                  }                 
+                });
+                };
+}
   bool isEmail(String email) {
     Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';

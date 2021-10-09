@@ -49,7 +49,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
     // double height = MediaQuery.of(context).size.height;
     void func2() {
       Navigator.push(
-          (context), MaterialPageRoute(builder: (context) => signup()));
+          (context), MaterialPageRoute(builder: (context) => Signup()));
     }
 
     // void func() {
@@ -86,6 +86,9 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
       child: Column(
         children: [
           AppTextForm(
+            onFieldSubmit: (value){ 
+              fieldSubmit(value);
+            },
               validator: (value) {
                 if (value == null || value.isEmpty)
                   return "This field is Required";
@@ -99,6 +102,10 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               obscure: false),
           SizedBox(height: 10),
           AppTextForm(
+            
+            onFieldSubmit: (value){ 
+              fieldSubmit(value);
+            },
               validator: (value) {
                 if (value == null || value.isEmpty)
                   return "This is Required Field";
@@ -207,10 +214,41 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
     controller.dispose();
     super.dispose();
   }
+  
 bool isEmail(String email) {
     Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     return regex.hasMatch(email);
+  }
+  void fieldSubmit(value){
+    
+                if (!_formKey.currentState.validate()) {
+                  // _formKey.currentState.save();
+                  status = null;                  
+                  return;
+                } else {
+                  // _formKey.currentState.save();
+                  inProgress = true;
+                  context
+                      .read<AuthenticationService>()
+                      .signIn(
+                        email: email.text.trim(),
+                        password: password.text.trim(),
+                      )
+                      .then((value) async {
+                   if (value == "Signed in")
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => UserScreen()));
+                    else {
+                      setState(() {
+                        inProgress = false;
+                        status = 'Email or Password is not valid';
+                      });
+                    }
+                  });
+                }
   }
 }

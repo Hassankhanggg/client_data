@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTextForm extends StatelessWidget {
   AppTextForm(
       {this.cont,
+      this.onFieldSubmit,
       this.s,
       this.obscure = false,
       this.warning = '',
@@ -10,11 +11,13 @@ class AppTextForm extends StatelessWidget {
 
   TextEditingController cont = TextEditingController();
   bool obscure;
+  final Function onFieldSubmit;
   String s, warning;
   final Function validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: onFieldSubmit,
       validator: validator,
       cursorColor: Colors.white,
       style: TextStyle(color: Colors.white),
