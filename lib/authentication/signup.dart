@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/customs/appTextForm.dart';
 import 'package:client_data/utils/user%20utils/PostUser.dart';
@@ -29,6 +27,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
   String status;
   double cValue;
   bool inProgress = false;
+  bool isVisible = false;
   void initstate() {
     controller =
         AnimationController(vsync: this, duration: Duration(seconds: 5))
@@ -95,7 +94,16 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           AppTextForm(
             cont: password,
             s: "Enter your Password",
-            obscure: true,
+            obscure: !isVisible,
+            visibleIcon: IconButton(
+              icon: Icon(isVisible ? Icons.visibility: Icons.visibility_off),
+              color: Colors.white,
+              onPressed: (){
+                setState(() {
+                  isVisible = !isVisible;
+                });
+              },
+            ),
             validator: (value) {
               if (value == null || value.isEmpty)
                 return "This is Required Field";

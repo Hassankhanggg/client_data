@@ -27,6 +27,7 @@ class _formLogin extends StatefulWidget {
 class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
+  bool isVisible = false;
   String status;
   void initState() {
     controller = AnimationController(
@@ -83,7 +84,16 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               },
               cont: password,
               s: "Password",
-              obscure: true),
+              obscure: !isVisible,
+            visibleIcon: IconButton(
+              icon: Icon(isVisible ? Icons.visibility: Icons.visibility_off),
+              color: Colors.white,
+              onPressed: (){
+                setState(() {
+                  isVisible = !isVisible;
+                });
+              },
+            )),
           SizedBox(height: 10),
           // customButton("Sign in", func),
           Container(

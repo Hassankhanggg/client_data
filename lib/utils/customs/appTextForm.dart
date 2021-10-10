@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppTextForm extends StatelessWidget {
-  AppTextForm(
+  AppTextForm(    
       {this.cont,
+      this.visibleIcon,
       this.onFieldSubmit,
       this.s,
       this.obscure = false,
@@ -13,17 +14,20 @@ class AppTextForm extends StatelessWidget {
   bool obscure;
   final Function onFieldSubmit;
   String s, warning;
+  Widget visibleIcon;
+
   final Function validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onFieldSubmitted: onFieldSubmit,
       validator: validator,
-      cursorColor: Colors.white,
+      cursorColor: Colors.white,      
       style: TextStyle(color: Colors.white),
       controller: cont,
       obscureText: obscure,
       decoration: InputDecoration(
+        suffixIcon: visibleIcon,
         hintText: s,
         hintStyle: TextStyle(color: Colors.white),
         filled: true,
