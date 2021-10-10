@@ -13,7 +13,6 @@ class signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ignore: missing_required_param
       body: DefaultWidget(_formLogin(), true, false, false),
     );
   }
@@ -95,7 +94,6 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               },
             )),
           SizedBox(height: 10),
-          // customButton("Sign in", func),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,

@@ -15,9 +15,12 @@ class SupplierScreen extends StatelessWidget {
   final String currentUserID;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // key: _scaffold,
-      body: DefaultWidget(supplier(currentUserID), false, true, true),
+    return WillPopScope(
+      onWillPop: () async => true,
+      child: Scaffold(
+        // key: _scaffold,
+        body: DefaultWidget(supplier(currentUserID), false, true, true),
+      ),
     );
   }
 }

@@ -10,11 +10,11 @@ class AppTextForm extends StatelessWidget {
       this.warning = '',
       this.validator});
 
-  TextEditingController cont = TextEditingController();
-  bool obscure;
+  final TextEditingController cont;
+  final bool obscure;
   final Function onFieldSubmit;
-  String s, warning;
-  Widget visibleIcon;
+  final String s, warning;
+  final Widget visibleIcon;
 
   final Function validator;
   @override

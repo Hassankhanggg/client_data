@@ -138,7 +138,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                               ))),
                 onPressed: () {
                   if (!_formkey.currentState.validate()) {
-                    //status = null;
+                    status = null;
                     return;
                   } else {
                     setState(() {
@@ -146,6 +146,9 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                     });
                     create_auth().then((value) async {
                       if (value == "Signed up") {
+                        setState(() {
+                          inProgress = false;
+                        });
                         FirebaseAuth _auth = FirebaseAuth.instance;
                         var x = DonaloPostUser(
                             Name: name.text,
@@ -155,7 +158,13 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                           Navigator.push(
                               (context),
                               MaterialPageRoute(
-                                  builder: (context) => UserScreen()));
+                                  builder: (context) => UserScreen()));                                                               
+                                  setState(() {
+                                    name.clear();
+                                  email.clear();
+                                  password.clear();
+                                    inProgress = false;
+                                  });
                         });
                       } else {
                         setState(() {
@@ -197,6 +206,12 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           await PostDataUser().post(x).then((value) {
             Navigator.push((context),
                 MaterialPageRoute(builder: (context) => UserScreen()));
+                setState(() {
+                                    name.clear();
+                                  email.clear();
+                                  password.clear();
+                                    inProgress = false;
+                                  });
           });
         } else {
           setState(() {
@@ -214,10 +229,5 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     return regex.hasMatch(email);
-  }
-
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }

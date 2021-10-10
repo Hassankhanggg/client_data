@@ -1,5 +1,6 @@
 import 'package:client_data/authentication/authentication_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:provider/src/provider.dart';
 
 class Navbar extends StatelessWidget {
@@ -24,7 +25,7 @@ class Navbar extends StatelessWidget {
 
 class DesktopNavbar extends StatelessWidget {
   bool showBackicon;
-  bool showlogout;
+  final bool showlogout;
 
   DesktopNavbar(this.showlogout, this.showBackicon)
       : assert(showBackicon != null),
@@ -32,6 +33,7 @@ class DesktopNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    showBackicon = false;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
       child: Container(
@@ -94,7 +96,7 @@ class DesktopNavbar extends StatelessWidget {
                               .signOut(context);
                         },
                         child: Text(
-                          "logout",
+                          "Logout",
                           style: TextStyle(color: Colors.white),
                         ),
                       )
