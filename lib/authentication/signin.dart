@@ -45,42 +45,11 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   TextEditingController password = TextEditingController();
 
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
     void func2() {
       Navigator.push(
           (context), MaterialPageRoute(builder: (context) => Signup()));
     }
 
-    // void func() {
-    //   context
-    //       .read<AuthenticationService>()
-    //       .signIn(
-    //         email: email.text.trim(),
-    //         password: password.text.trim(),
-    //       )
-    //       .then((value) => print(value));
-    // }
-
-    // openLoadingDialog(BuildContext context, String text) {
-    //   showDialog(
-    //       context: context,
-    //       barrierDismissible: false,
-    //       builder: (context) => AlertDialog(
-    //             content: Row(children: <Widget>[
-    //               SizedBox(
-    //                   width: 30,
-    //                   height: 30,
-    //                   child: CircularProgressIndicator(
-    //                       strokeWidth: 1,
-    //                       valueColor: AlwaysStoppedAnimation(Colors.black))),
-    //               SizedBox(width: 10),
-    //               Text(text)
-    //             ]),
-    //           ));
-    // }
-
-    // r = context;
     return Form(
       key: _formKey,
       child: Column(
@@ -138,11 +107,9 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                             ))),
               onPressed: () {
                 if (!_formKey.currentState.validate()) {
-                  // _formKey.currentState.save();
                   status = null;                  
                   return;
                 } else {
-                  // _formKey.currentState.save();
                   inProgress = true;
                   context
                       .read<AuthenticationService>()
@@ -164,9 +131,6 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                     }
                   });
                 }
-
-                // Navigator.push((context),
-                //     MaterialPageRoute(builder: (context) => selectscreen()));
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepPurple,
@@ -186,25 +150,6 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                 style: TextStyle(color: Colors.white),
               ),
               func2),
-          // ElevatedButton(
-          //   child:   SizedBox(
-          //       width: 190,
-          //       height: 50,
-          //       child: Center(
-          //           child: Text(
-          //         "Register a new account",
-          //         style: TextStyle(color: Colors.white),
-          //       ))),
-          //   onPressed: () => Navigator.push(
-          //       (context), MaterialPageRoute(builder: (context) => signup())),
-          //   style: ElevatedButton.styleFrom(
-          //     primary: Colors.deepPurple,
-          //     onPrimary: Colors.redAccent,
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(15),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
@@ -224,11 +169,9 @@ bool isEmail(String email) {
   void fieldSubmit(value){
     
                 if (!_formKey.currentState.validate()) {
-                  // _formKey.currentState.save();
                   status = null;                  
                   return;
                 } else {
-                  // _formKey.currentState.save();
                   inProgress = true;
                   context
                       .read<AuthenticationService>()

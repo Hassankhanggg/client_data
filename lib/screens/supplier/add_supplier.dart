@@ -49,6 +49,7 @@ class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     void func() async {
       inProgress = true;
+      print("sup con  : " + controller.toString());
       var x = DonaloPost(
           cusName: name.text,
           offeredRate: int.parse(offer.text),
