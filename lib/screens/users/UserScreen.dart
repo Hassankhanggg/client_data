@@ -1,10 +1,8 @@
-import 'package:client_data/screens/users/add%20user.dart';
 import 'package:client_data/utils/user%20utils/PostUser.dart';
 import 'package:client_data/utils/card.dart';
 import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/user%20utils/itemCardUsers.dart';
 import 'package:client_data/utils/user%20utils/model%20user.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserScreen extends StatelessWidget {

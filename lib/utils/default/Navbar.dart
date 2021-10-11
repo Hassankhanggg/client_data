@@ -54,6 +54,7 @@ void showDialogs() {
   );
 }
 
+// ignore: must_be_immutable
 class DesktopNavbar extends StatelessWidget {
   bool showBackicon;
   final bool showlogout;
@@ -166,6 +167,7 @@ class DesktopNavbar extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class MobileNavbar extends StatelessWidget {
   bool showBackicon;
   bool showlogout;
