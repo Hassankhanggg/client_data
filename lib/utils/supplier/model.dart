@@ -2,8 +2,8 @@ class DonaloPost {
   final String postID;
   final String userID;
   final String cusName;
-  final int offeredRate;
-  final double ports;
+  final String offeredRate;
+  final String ports;
   final String dest;
 
   DonaloPost({

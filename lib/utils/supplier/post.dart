@@ -15,7 +15,7 @@ class PostData {
     String _key = getRandomString(26);
     final donaloPost = DonaloPost(
       postID: _key,
-      userID: _auth.currentUser.uid,
+      userID: post.userID,
       cusName: post.cusName,
       ports: post.ports,
       dest: post.dest,

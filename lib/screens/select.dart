@@ -33,6 +33,7 @@ class _SelectState extends State<Select> with TickerProviderStateMixin {
 
   _SelectState(String userID);
   void initState() {
+    print(widget.currentUserID);
     controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 5),

@@ -7,17 +7,16 @@ import 'package:client_data/utils/client%20utils/modelclient.dart';
 import 'package:flutter/material.dart';
 
 class AddClient extends StatelessWidget {
- final String currentUserID;
+  final String currentUserID;
   AddClient(this.currentUserID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body:
           DefaultWidget(AddDetailClient(currentUserID), true, true, true, true),
     );
   }
-} 
+}
 
 TextEditingController name = TextEditingController();
 TextEditingController ports = TextEditingController();
@@ -51,8 +50,9 @@ class _AddDetailClientState extends State<AddDetailClient>
       inProgress = true;
       var x = DonaloPostClient(
           cusName: name.text,
-          offeredRate: int.parse(offer.text),
-          ports: double.parse(ports.text),
+          offeredRate: offer.text,
+          ports: ports.text,
+          userID: widget.currentUserID,
           dest: dest.text);
       await PostDataClient().post(x).then((value) {
         print('$value');

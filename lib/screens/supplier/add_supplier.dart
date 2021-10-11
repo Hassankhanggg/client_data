@@ -50,8 +50,9 @@ class _AddDetailState extends State<AddDetail> with TickerProviderStateMixin {
       inProgress = true;
       var x = DonaloPost(
           cusName: name.text,
-          offeredRate: int.parse(offer.text),
-          ports: double.parse(ports.text),
+          offeredRate: offer.text,
+          ports: ports.text,
+          userID: widget.currentUserID,
           dest: dest.text);
       await PostData().post(x).then((value) {
         print('$value');
