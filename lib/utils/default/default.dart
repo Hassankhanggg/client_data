@@ -2,11 +2,11 @@ import 'package:client_data/utils/default/Navbar.dart';
 import 'package:flutter/material.dart';
 
 class DefaultWidget extends StatelessWidget {
-  bool showBackicon;
-  Widget widget;
-  bool showimage;
-  bool showHome;
-  bool showlogout;
+  final bool showBackicon;
+  final Widget widget;
+  final bool showimage;
+  final bool showHome;
+  final bool showlogout;
   DefaultWidget(this.widget, this.showimage, this.showlogout, this.showBackicon,
       this.showHome);
 

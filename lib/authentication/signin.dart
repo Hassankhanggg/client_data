@@ -9,7 +9,7 @@ import 'package:client_data/utils/default/default.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 
-class signin extends StatelessWidget {
+class Signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +100,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
             ),
             child: ElevatedButton(
               child: SizedBox(
-                  width: double.infinity,
+                  width: 250,
                   height: 50,
                   child: Center(
                       child: inProgress

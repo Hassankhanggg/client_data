@@ -5,7 +5,6 @@ import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/supplier/item_card.dart';
 import 'package:client_data/utils/supplier/model.dart';
 import 'package:client_data/utils/supplier/post.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // return WillPopScope(
@@ -20,7 +19,7 @@ class SupplierScreen extends StatelessWidget {
       onWillPop: () async => true,
       child: Scaffold(
         // key: _scaffold,
-        body: DefaultWidget(supplier(currentUserID), false, true, true, true),
+        body: DefaultWidget(Supplier(currentUserID), false, true, true, true),
       ),
     );
   }
@@ -28,9 +27,9 @@ class SupplierScreen extends StatelessWidget {
 
 BuildContext globalContext;
 
-class supplier extends StatelessWidget {
-  supplier(this.currentUserID);
-  String currentUserID;
+class Supplier extends StatelessWidget {
+  Supplier(this.currentUserID);
+ final  String currentUserID;
   @override
   Widget build(BuildContext context) {
     print(currentUserID);
@@ -42,7 +41,7 @@ class supplier extends StatelessWidget {
         Row(
           children: [
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {
@@ -51,7 +50,7 @@ class supplier extends StatelessWidget {
                 Navigator.push(
                     (context),
                     MaterialPageRoute(
-                        builder: (context) => add_item(currentUserID)));
+                        builder: (context) => AddSupp(currentUserID)));
               },
               child: Text(
                 "Add Supplier",
@@ -62,7 +61,7 @@ class supplier extends StatelessWidget {
               width: 10,
             ),
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {
@@ -80,7 +79,7 @@ class supplier extends StatelessWidget {
               width: 10,
             ),
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {
@@ -151,6 +150,6 @@ class supplier extends StatelessWidget {
 
   void func() {
     Navigator.push((globalContext),
-        MaterialPageRoute(builder: (context) => add_item(currentUserID)));
+        MaterialPageRoute(builder: (context) => AddSupp(currentUserID)));
   }
 }

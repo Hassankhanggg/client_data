@@ -5,7 +5,6 @@ import 'package:client_data/utils/card.dart';
 import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/client%20utils/itemCardClient.dart';
 import 'package:client_data/utils/client%20utils/modelclient.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ClientScreen extends StatelessWidget {
@@ -25,7 +24,7 @@ BuildContext globalContext;
 
 class Client extends StatelessWidget {
   Client({this.currentUserID});
-  String currentUserID;
+  final String currentUserID;
   @override
   Widget build(BuildContext context) {
     // Stream<List<DonaloPost>> l;
@@ -37,7 +36,7 @@ class Client extends StatelessWidget {
         Row(
           children: [
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
               onPressed: () {
@@ -57,7 +56,7 @@ class Client extends StatelessWidget {
               width: 10,
             ),
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {
@@ -75,7 +74,7 @@ class Client extends StatelessWidget {
               width: 10,
             ),
             MaterialButton(
-              color: Colors.purple.shade900,
+              color: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {

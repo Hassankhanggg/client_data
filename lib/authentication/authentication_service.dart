@@ -16,7 +16,7 @@ class AuthenticationService {
   Future<void> signOut(BuildContext context) async {
     await _firebaseAuth.signOut();
     Navigator.push(
-        (context), MaterialPageRoute(builder: (context) => signin()));
+        (context), MaterialPageRoute(builder: (context) => Signin()));
   }
 
   /// There are a lot of different ways on how you can do exception handling.

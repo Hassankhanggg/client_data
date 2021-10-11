@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(this.s, this.func);
-  Widget s;
-  Function func;
+ final  Widget s;
+  final Function func;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       child: ElevatedButton(
-        child: SizedBox(width: 300, height: 50, child: Center(child: s)),
+        child: SizedBox(width: 250, height: 50, child: Center(child: s)),
         onPressed: () async {
           func();
         },

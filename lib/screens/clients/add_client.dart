@@ -1,5 +1,4 @@
 import 'package:client_data/screens/clients/client.dart';
-import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/client%20utils/PostClient.dart';
 import 'package:client_data/utils/customs/appTextForm.dart';
 import 'package:client_data/utils/customs/customButton.dart';
@@ -8,14 +7,14 @@ import 'package:client_data/utils/client%20utils/modelclient.dart';
 import 'package:flutter/material.dart';
 
 class AddClient extends StatelessWidget {
-  String currentUserID;
+ final String currentUserID;
   AddClient(this.currentUserID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
       body:
-          DefaultWidget(addDetailClient(currentUserID), true, true, true, true),
+          DefaultWidget(AddDetailClient(currentUserID), true, true, true, true),
     );
   }
 } //store user,table,
@@ -25,14 +24,14 @@ TextEditingController ports = TextEditingController();
 TextEditingController dest = TextEditingController();
 TextEditingController offer = TextEditingController();
 
-class addDetailClient extends StatefulWidget {
-  String currentUserID;
-  addDetailClient(this.currentUserID);
+class AddDetailClient extends StatefulWidget {
+  final String currentUserID;
+  AddDetailClient(this.currentUserID);
   @override
-  State<addDetailClient> createState() => _addDetailClientState();
+  State<AddDetailClient> createState() => _AddDetailClientState();
 }
 
-class _addDetailClientState extends State<addDetailClient>
+class _AddDetailClientState extends State<AddDetailClient>
     with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;

@@ -1,18 +1,18 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:client_data/authentication/authentication_service.dart';
 import 'package:client_data/authentication/signin.dart';
 import 'package:client_data/screens/users/UserScreen.dart';
-import 'package:client_data/utils/customs/customButton.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:provider/src/provider.dart';
 
 BuildContext gcontext;
 
 class Navbar extends StatelessWidget {
   Navbar(this.showlogout, this.showBackicon, this.showHome);
-  bool showHome;
-  bool showBackicon;
-  bool showlogout;
+  final bool showHome;
+  final bool showBackicon;
+  final bool showlogout;
   @override
   Widget build(BuildContext context) {
     gcontext = context;
@@ -47,7 +47,7 @@ void showDialogs() {
         content: new Text("   any details about family "),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
-          new FlatButton(
+          new ElevatedButton(
             child: new Text("Close"),
             onPressed: () {
               Navigator.of(context).pop();
@@ -59,10 +59,11 @@ void showDialogs() {
   );
 }
 
+
 class DesktopNavbar extends StatelessWidget {
-  bool showBackicon;
+   bool showBackicon ;
   final bool showlogout;
-  bool showHome;
+  final bool showHome;
 
   DesktopNavbar(this.showlogout, this.showBackicon, this.showHome)
       : assert(showBackicon != null),
@@ -110,7 +111,7 @@ class DesktopNavbar extends StatelessWidget {
                 children: <Widget>[
                   showHome
                       ? MaterialButton(
-                          color: Colors.blue,
+                          color: Colors.cyan,
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
@@ -153,7 +154,7 @@ class DesktopNavbar extends StatelessWidget {
                                 .signOut(context);
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) => signin()),
+                                    builder: (context) => Signin()),
                                 (Route<dynamic> route) => false);
                           },
                           child: Text(
@@ -237,7 +238,7 @@ class MobileNavbar extends StatelessWidget {
                               .read<AuthenticationService>()
                               .signOut(context);
                           Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (context) => signin()),
+                              MaterialPageRoute(builder: (context) => Signin()),
                               (Route<dynamic> route) => false);
                         },
                         child: Text(

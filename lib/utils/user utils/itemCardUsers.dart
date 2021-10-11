@@ -1,6 +1,4 @@
-import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/screens/select.dart';
-import 'package:client_data/utils/user%20utils/PostUser.dart';
 import 'package:client_data/utils/user%20utils/model%20user.dart';
 import 'package:flutter/material.dart';
 

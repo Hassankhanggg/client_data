@@ -5,35 +5,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class SelectScreen extends StatelessWidget {
-  String currentUserID;
+  final String currentUserID;
   SelectScreen({Key key, this.currentUserID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultWidget(
-          select(currentUserID: currentUserID), true, true, true, true),
+          Select(currentUserID: currentUserID), true, true, true, true),
     );
   }
 }
 
-class select extends StatefulWidget {
-  String currentUserID;
+class Select extends StatefulWidget {
+  final String currentUserID;
 
   // String userID = widget.userID;
-  select({this.currentUserID});
+  Select({this.currentUserID});
   // String uID = userID;
   //String userID = widget.userID;
   @override
-  State<select> createState() => _selectState(currentUserID);
+  State<Select> createState() => _SelectState(currentUserID);
 }
 
-class _selectState extends State<select> with TickerProviderStateMixin {
+class _SelectState extends State<Select> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
   bool inProgress1 = false;
 
-  _selectState(String userID);
+  _SelectState(String userID);
   void initState() {
     controller = AnimationController(
       vsync: this,
@@ -66,7 +66,7 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                               semanticsLabel: 'Linear progress indicator',
                             )
                           : Text(
-                              "SUPPLIER",
+                              "Supplier",
                               style: TextStyle(color: Colors.white),
                             ))),
               onPressed: () {
@@ -79,8 +79,7 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                 inProgress = false;
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple,
-                onPrimary: Colors.redAccent,
+                primary: Colors.cyan,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -114,7 +113,7 @@ class _selectState extends State<select> with TickerProviderStateMixin {
               inProgress1 = false;
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.deepPurple,
+              primary: Colors.cyan,
               onPrimary: Colors.redAccent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),

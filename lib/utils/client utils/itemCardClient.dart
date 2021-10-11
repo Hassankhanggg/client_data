@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class ItemCardClient extends StatefulWidget {
   final DonaloPostClient clientproduct;
-  String currentuserID;
+ final  String currentuserID;
   ItemCardClient(
     this.currentuserID, {
     Key key,

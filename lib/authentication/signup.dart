@@ -1,3 +1,4 @@
+import 'package:client_data/authentication/signin.dart';
 import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/customs/appTextForm.dart';
 import 'package:client_data/utils/user%20utils/PostUser.dart';
@@ -73,7 +74,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
             },
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           AppTextForm(
             cont: email,
@@ -90,7 +91,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                 return status;
             },
           ),
-          SizedBox(height: 30),
+          SizedBox(height: 15),
           AppTextForm(
             cont: password,
             s: "Enter your Password",
@@ -124,7 +125,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
               ),
               child: ElevatedButton(
                 child: SizedBox(
-                    width: double.infinity,
+                    width: 250,
                     height: 50,
                     child: Center(
                         child: inProgress
@@ -184,6 +185,35 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                   ),
                 ),
               )),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            child: SizedBox(
+                width: 250,
+                height: 50,
+                child: Center(
+                    child: inProgress
+                        ? CircularProgressIndicator(
+                            value: cValue,
+                            semanticsLabel: 'Linear progress indicator',
+                          )
+                        : Text(
+                            "Already regesterd? Sign in!",
+                            style: TextStyle(color: Colors.white),
+                          ))),
+            onPressed: () {
+              Navigator.push(
+                  (context), MaterialPageRoute(builder: (context) => Signin()));
+            },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.cyan,
+              onPrimary: Colors.redAccent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          )
         ],
       ),
     );

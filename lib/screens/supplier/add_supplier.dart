@@ -6,14 +6,14 @@ import 'package:client_data/utils/supplier/model.dart';
 import 'package:client_data/utils/supplier/post.dart';
 import 'package:flutter/material.dart';
 
-class add_item extends StatelessWidget {
-  String currentUserID;
-  add_item(this.currentUserID);
+class AddSupp extends StatelessWidget {
+  final String currentUserID;
+  AddSupp(this.currentUserID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: DefaultWidget(addDetail(currentUserID), true, true, true, true),
+      body: DefaultWidget(AddDetail(currentUserID), true, true, true, true),
     );
   }
 }
@@ -23,15 +23,15 @@ TextEditingController ports = TextEditingController();
 TextEditingController dest = TextEditingController();
 TextEditingController offer = TextEditingController();
 
-class addDetail extends StatefulWidget {
-  String currentUserID;
-  addDetail(this.currentUserID);
+class AddDetail extends StatefulWidget {
+  final String currentUserID;
+  AddDetail(this.currentUserID);
 
   @override
-  State<addDetail> createState() => _addDetailState();
+  State<AddDetail> createState() => _AddDetailState();
 }
 
-class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
+class _AddDetailState extends State<AddDetail> with TickerProviderStateMixin {
   AnimationController controller;
   bool inProgress = false;
   String status = 'Reqiured';
