@@ -153,7 +153,7 @@ class _UserScreenClassState extends State<UserScreenClass> {
                               ));
                     } else {
                       return Center(
-                        child: Text('Error'),
+                        child: Text('Loading....'),
                       );
                     }
                   },

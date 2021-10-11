@@ -17,8 +17,8 @@ class CustomButton extends StatelessWidget {
           func();
         },
         style: ElevatedButton.styleFrom(
-          primary: Colors.deepPurple,
-          onPrimary: Colors.redAccent,
+          primary: Colors.cyan,
+          onPrimary: Colors.cyan[50],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),

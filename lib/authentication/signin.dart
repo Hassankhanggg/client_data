@@ -13,7 +13,7 @@ class signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DefaultWidget(_formLogin(), true, false, false,false),
+      body: DefaultWidget(_formLogin(), true, false, false, false),
     );
   }
 }
@@ -55,44 +55,43 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
       child: Column(
         children: [
           AppTextForm(
-            onFieldSubmit: (value){ 
-              fieldSubmit(value);
-            },
+              onFieldSubmit: (value) {
+                fieldSubmit(value);
+              },
               validator: (value) {
                 if (value == null || value.isEmpty)
                   return "This field is Required";
-                else if(!isEmail(email.text))
+                else if (!isEmail(email.text))
                   return "Provide a valid Email address";
                 else
-                return status;
+                  return status;
               },
               cont: email,
               s: "Enter email or phone number",
               obscure: false),
           SizedBox(height: 10),
           AppTextForm(
-            
-            onFieldSubmit: (value){ 
-              fieldSubmit(value);
-            },
+              onFieldSubmit: (value) {
+                fieldSubmit(value);
+              },
               validator: (value) {
                 if (value == null || value.isEmpty)
                   return "This is Required Field";
                 else
-                return status;
+                  return status;
               },
               cont: password,
               s: "Password",
               obscure: !isVisible,
-            visibleIcon: IconButton(
-              icon: Icon(isVisible ? Icons.visibility: Icons.visibility_off),
-              color: Colors.white,
-              onPressed: (){
-                setState(() {
-                  isVisible = !isVisible;
-                });
-              },
-            )),
+              visibleIcon: IconButton(
+                icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off),
+                color: Colors.white,
+                onPressed: () {
+                  setState(() {
+                    isVisible = !isVisible;
+                  });
+                },
+              )),
           SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
@@ -115,7 +114,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                             ))),
               onPressed: () {
                 if (!_formKey.currentState.validate()) {
-                  status = null;                  
+                  status = null;
                   return;
                 } else {
                   inProgress = true;
@@ -126,7 +125,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                         password: password.text.trim(),
                       )
                       .then((value) async {
-                   if (value == "Signed in")
+                    if (value == "Signed in")
                       Navigator.push(
                           (context),
                           MaterialPageRoute(
@@ -141,8 +140,8 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                 }
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple,
-                onPrimary: Colors.redAccent,
+                primary: Colors.cyan,
+                onPrimary: Colors.cyan[50],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -167,39 +166,37 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
     controller.dispose();
     super.dispose();
   }
-  
-bool isEmail(String email) {
+
+  bool isEmail(String email) {
     Pattern pattern =
-      r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     return regex.hasMatch(email);
   }
-  void fieldSubmit(value){
-    
-                if (!_formKey.currentState.validate()) {
-                  status = null;                  
-                  return;
-                } else {
-                  inProgress = true;
-                  context
-                      .read<AuthenticationService>()
-                      .signIn(
-                        email: email.text.trim(),
-                        password: password.text.trim(),
-                      )
-                      .then((value) async {
-                   if (value == "Signed in")
-                      Navigator.push(
-                          (context),
-                          MaterialPageRoute(
-                              builder: (context) => UserScreen()));
-                    else {
-                      setState(() {
-                        inProgress = false;
-                        status = 'Email or Password is not valid';
-                      });
-                    }
-                  });
-                }
+
+  void fieldSubmit(value) {
+    if (!_formKey.currentState.validate()) {
+      status = null;
+      return;
+    } else {
+      inProgress = true;
+      context
+          .read<AuthenticationService>()
+          .signIn(
+            email: email.text.trim(),
+            password: password.text.trim(),
+          )
+          .then((value) async {
+        if (value == "Signed in")
+          Navigator.push(
+              (context), MaterialPageRoute(builder: (context) => UserScreen()));
+        else {
+          setState(() {
+            inProgress = false;
+            status = 'Email or Password is not valid';
+          });
+        }
+      });
+    }
   }
 }

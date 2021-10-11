@@ -145,7 +145,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                       inProgress = true;
                     });
                     create_auth().then((value) async {
-                      print(value); 
+                      print(value);
                       if (value == "Signed up") {
                         FirebaseAuth _auth = FirebaseAuth.instance;
                         var x = DonaloPostUser(
@@ -177,7 +177,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
+                  primary: Colors.cyan,
                   onPrimary: Colors.redAccent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),

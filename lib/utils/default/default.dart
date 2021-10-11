@@ -7,8 +7,8 @@ class DefaultWidget extends StatelessWidget {
   bool showimage;
   bool showHome;
   bool showlogout;
-  DefaultWidget(
-      this.widget, this.showimage, this.showlogout, this.showBackicon,this.showHome);
+  DefaultWidget(this.widget, this.showimage, this.showlogout, this.showBackicon,
+      this.showHome);
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,12 @@ class DefaultWidget extends StatelessWidget {
         // alignment: AlignmentGeometry,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
-                Colors.black, Colors.black87, Colors.blueGrey.shade900,
-                Colors.deepPurple
+                Colors.black12, Colors.white54, Colors.white60,
+                Colors.white70,
+
                 // Color.fromRGBO(90, 20, 120, 1.0),
                 // Color.fromRGBO(36, 11, 54, 1.0)
               ]),
@@ -29,7 +30,7 @@ class DefaultWidget extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Navbar(showlogout, showBackicon,showHome),
+              Navbar(showlogout, showBackicon, showHome),
               Padding(
                 padding: const EdgeInsets.symmetric(),
                 child: LayoutBuilder(
@@ -78,6 +79,9 @@ class DefaultWidget extends StatelessWidget {
             )
           ],
         ),
+      ),
+      SizedBox(
+        height: 600,
       ),
     ];
   }

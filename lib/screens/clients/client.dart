@@ -131,7 +131,7 @@ class Client extends StatelessWidget {
                               ));
                     } else {
                       return Center(
-                        child: Text('Error'),
+                        child: Text('Loading...'),
                       );
                     }
                   },
