@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(this.s, this.func);
- final  Widget s;
+  final Widget s;
   final Function func;
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,6 @@ class CustomButton extends StatelessWidget {
 }
 
 class ProgressButton extends StatefulWidget {
-// ProgressButton();
-
   @override
   _ProgressButtonState createState() => _ProgressButtonState();
 }
@@ -66,9 +64,7 @@ class _ProgressButtonState extends State<ProgressButton>
               value: controller.value,
               semanticsLabel: "Linear progress indicator",
             ))),
-        onPressed: () {
-          // widget.func();
-        },
+        onPressed: () {},
         style: ElevatedButton.styleFrom(
           primary: Colors.deepPurple,
           onPrimary: Colors.redAccent,

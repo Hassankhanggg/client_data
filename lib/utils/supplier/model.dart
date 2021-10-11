@@ -1,4 +1,3 @@
-
 class DonaloPost {
   final String postID;
   final String userID;

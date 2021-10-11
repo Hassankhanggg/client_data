@@ -11,16 +11,14 @@ class addUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ignore: missing_required_param
-      body: DefaultWidget(addDetailUser(), true, true, true,true),
+      body: DefaultWidget(addDetailUser(), true, true, true, true),
     );
   }
-} //store user,table,
+}
 
 TextEditingController name = TextEditingController();
-// TextEditingController ports = TextEditingController();
+
 TextEditingController email = TextEditingController();
-// TextEditingController offer = TextEditingController();
 
 class addDetailUser extends StatefulWidget {
   @override
@@ -47,11 +45,7 @@ class _addDetailUserState extends State<addDetailUser>
       inProgress = true;
       FirebaseAuth _auth = FirebaseAuth.instance;
       var x = DonaloPostUser(
-          Name: name.text,
-          // offeredRate: int.parse(offer.text),
-          // ports: double.parse(ports.text),
-          userID: _auth.currentUser.uid,
-          email: email.text);
+          Name: name.text, userID: _auth.currentUser.uid, email: email.text);
       await PostDataUser().post(x).then((value) {
         print('$value');
         Navigator.push(
@@ -64,12 +58,8 @@ class _addDetailUserState extends State<addDetailUser>
       children: [
         AppTextForm(cont: name, s: "Enter User name", obscure: false),
         SizedBox(height: 30),
-        // AppTextForm(cont: ports, s: "Available ports", obscure: false),
-        // SizedBox(height: 30),
         AppTextForm(cont: email, s: "email", obscure: false),
         SizedBox(height: 30),
-        // AppTextForm(cont: offer, s: "offered rate", obscure: false),
-        // SizedBox(height: 30),
         SizedBox(height: 40),
         CustomButton(
             inProgress

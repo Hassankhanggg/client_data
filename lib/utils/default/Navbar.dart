@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:client_data/authentication/authentication_service.dart';
 import 'package:client_data/authentication/signin.dart';
 import 'package:client_data/screens/users/UserScreen.dart';
@@ -31,11 +29,9 @@ class Navbar extends StatelessWidget {
 }
 
 void showDialogs() {
-  // flutter defined function
   showDialog(
     context: gcontext,
     builder: (BuildContext context) {
-      // return object of type Dialog
       return AlertDialog(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         backgroundColor: Colors.cyan[100],
@@ -46,7 +42,6 @@ void showDialogs() {
         content: new Text(
             "   Family Communication Ptd Ltd   \n   Trust | Value | Quality    \n    We never compromise !   \n   Worldwide coverage of Wholesale Voice and SMS !    \n"),
         actions: <Widget>[
-          // usually buttons at the bottom of the dialog
           new ElevatedButton(
             child: new Text("Close"),
             onPressed: () {
@@ -81,7 +76,6 @@ class DesktopNavbar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
         child: Container(
-          // color: Colors.cyan,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -190,11 +184,9 @@ class MobileNavbar extends StatelessWidget {
       child: Container(
         child: Column(children: <Widget>[
           Text(
-            "Family Communications",
+            "Family Communication",
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.cyanAccent,
-                fontSize: 30),
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 30),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -203,7 +195,7 @@ class MobileNavbar extends StatelessWidget {
               children: <Widget>[
                 showHome
                     ? MaterialButton(
-                        color: Colors.blue,
+                        color: Colors.cyan,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
@@ -217,7 +209,7 @@ class MobileNavbar extends StatelessWidget {
                       )
                     : Text(''),
                 SizedBox(
-                  width: 30,
+                  width: 10,
                 ),
                 MaterialButton(
                   color: Colors.cyan,
@@ -232,14 +224,7 @@ class MobileNavbar extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  "About Us",
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  width: 30,
+                  width: 10,
                 ),
                 showlogout
                     ? MaterialButton(

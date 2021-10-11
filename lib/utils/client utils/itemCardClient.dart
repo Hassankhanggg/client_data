@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class ItemCardClient extends StatefulWidget {
   final DonaloPostClient clientproduct;
- final  String currentuserID;
+  final String currentuserID;
   ItemCardClient(
     this.currentuserID, {
     Key key,
@@ -22,17 +22,12 @@ class _ItemCardClientState extends State<ItemCardClient> {
   Widget build(BuildContext context) {
     print("itemcardclient : " + widget.currentuserID);
     return GestureDetector(
-      // onTap: press,
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20),
-              // height: 180,
-              // width: 160,
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(16),
@@ -43,7 +38,6 @@ class _ItemCardClientState extends State<ItemCardClient> {
                     "assets/images/client.jpg",
                     width: 50,
                     height: 40,
-                    //fit: BoxFit.cover,
                   ),
                   SizedBox(
                     height: 5,
@@ -79,20 +73,9 @@ class _ItemCardClientState extends State<ItemCardClient> {
                     },
                   ),
                 ],
-              ), //     child: Hero(tag: "${clientproduct.id}",   )
+              ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(vertical: 5),
-          //   child: Text(
-          //     // clientproducts is out demo list
-          //     clientproduct.name,
-          //   ),
-          // ),
-          // Text(
-          //   "${clientproduct.postID}",
-          //   style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          // )
         ],
       ),
     );

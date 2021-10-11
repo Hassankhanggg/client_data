@@ -14,12 +14,9 @@ class PostDataUser {
     String _key = getRandomString(26);
     final DonaloPostUser user = DonaloPostUser(
       postID: _key,
-      // userID: _auth.currentUser.uid,
       Name: post.Name,
       userID: post.userID,
-      // ports: post.ports,
       email: post.email,
-      // offeredRate: post.offeredRate,
     );
     try {
       return await _firestore.collection('Users').doc(_key).set(user.toMap());

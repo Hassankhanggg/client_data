@@ -7,9 +7,6 @@ import 'package:client_data/utils/supplier/model.dart';
 import 'package:client_data/utils/supplier/post.dart';
 import 'package:flutter/material.dart';
 
-// return WillPopScope(
-//   onWillPop: () async => true,
-//   child: Scaffold(
 class SupplierScreen extends StatelessWidget {
   SupplierScreen(this.currentUserID);
   final String currentUserID;
@@ -18,7 +15,6 @@ class SupplierScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
-        // key: _scaffold,
         body: DefaultWidget(Supplier(currentUserID), false, true, true, true),
       ),
     );
@@ -29,13 +25,13 @@ BuildContext globalContext;
 
 class Supplier extends StatelessWidget {
   Supplier(this.currentUserID);
- final  String currentUserID;
+  final String currentUserID;
   @override
   Widget build(BuildContext context) {
     print(currentUserID);
     Stream<List<DonaloPost>> l;
     double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
         Row(
@@ -95,8 +91,6 @@ class Supplier extends StatelessWidget {
             ),
           ],
         ),
-        // customButton("Add new customer", func),
-
         SizedBox(
           height: 10,
         ),
@@ -124,10 +118,9 @@ class Supplier extends StatelessWidget {
                                         : 2,
                             mainAxisSpacing: 20,
                             crossAxisSpacing: 20,
-                            childAspectRatio: //big                 //small
-                                width > 700
-                                    ? width / 1000 * 0.5
-                                    : width / 1000 * 1.5,
+                            childAspectRatio: width > 700
+                                ? width / 1000 * 0.5
+                                : width / 1000 * 1.5,
                           ),
                           itemBuilder: (context, index) => ItemCard(
                                 currentUserID,

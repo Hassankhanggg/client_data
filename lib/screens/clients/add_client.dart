@@ -12,12 +12,12 @@ class AddClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ignore: missing_required_param
+      
       body:
           DefaultWidget(AddDetailClient(currentUserID), true, true, true, true),
     );
   }
-} //store user,table,
+} 
 
 TextEditingController name = TextEditingController();
 TextEditingController ports = TextEditingController();

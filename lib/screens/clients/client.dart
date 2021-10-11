@@ -13,7 +13,6 @@ class ClientScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: _scaffold,
       body: DefaultWidget(
           Client(currentUserID: currentUserID), false, true, true, true),
     );
@@ -27,12 +26,10 @@ class Client extends StatelessWidget {
   final String currentUserID;
   @override
   Widget build(BuildContext context) {
-    // Stream<List<DonaloPost>> l;
     double width = MediaQuery.of(context).size.width;
-    //double height = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
-        // customButton("Add new customer", func),
         Row(
           children: [
             MaterialButton(
@@ -40,8 +37,6 @@ class Client extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
               onPressed: () {
-                // l = PostData().getPosts();
-                // print(l);
                 Navigator.push(
                     (context),
                     MaterialPageRoute(
@@ -90,7 +85,6 @@ class Client extends StatelessWidget {
             ),
           ],
         ),
-
         SizedBox(
           height: 10,
         ),
@@ -119,10 +113,9 @@ class Client extends StatelessWidget {
                                         : 2,
                             mainAxisSpacing: 20,
                             crossAxisSpacing: 20,
-                            childAspectRatio: //big                 //small
-                                width > 700
-                                    ? width / 1000 * 0.5
-                                    : width / 1000 * 1.5,
+                            childAspectRatio: width > 700
+                                ? width / 1000 * 0.5
+                                : width / 1000 * 1.5,
                           ),
                           itemBuilder: (context, index) => ItemCardClient(
                                 currentUserID,

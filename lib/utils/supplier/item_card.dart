@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 class ItemCard extends StatefulWidget {
   final DonaloPost product;
   final String currentUserID;
-  ItemCard(this.currentUserID,{
+  ItemCard(
+    this.currentUserID, {
     Key key,
     this.product,
   }) : super(key: key);
@@ -19,17 +20,12 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: press,
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20),
-              // height: 180,
-              // width: 160,
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(16),
@@ -40,7 +36,6 @@ class _ItemCardState extends State<ItemCard> {
                     "assets/images/client.jpg",
                     width: 50,
                     height: 40,
-                    //fit: BoxFit.cover,
                   ),
                   SizedBox(
                     height: 5,
@@ -68,26 +63,16 @@ class _ItemCardState extends State<ItemCard> {
                         Navigator.push(
                             (context),
                             MaterialPageRoute(
-                                builder: (context) => SupplierScreen(widget.currentUserID)));
+                                builder: (context) =>
+                                    SupplierScreen(widget.currentUserID)));
                         print("delete");
                       });
                     },
                   ),
                 ],
-              ), //     child: Hero(tag: "${product.id}",   )
+              ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(vertical: 5),
-          //   child: Text(
-          //     // products is out demo list
-          //     product.name,
-          //   ),
-          // ),
-          // Text(
-          //   "${product.postID}",
-          //   style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-          // )
         ],
       ),
     );

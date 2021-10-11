@@ -12,7 +12,6 @@ class AddSupp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ignore: missing_required_param
       body: DefaultWidget(AddDetail(currentUserID), true, true, true, true),
     );
   }

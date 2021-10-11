@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTextForm extends StatelessWidget {
-  AppTextForm(    
+  AppTextForm(
       {this.cont,
       this.visibleIcon,
       this.onFieldSubmit,
@@ -22,7 +22,7 @@ class AppTextForm extends StatelessWidget {
     return TextFormField(
       onFieldSubmitted: onFieldSubmit,
       validator: validator,
-      cursorColor: Colors.white,      
+      cursorColor: Colors.white,
       style: TextStyle(color: Colors.white),
       controller: cont,
       obscureText: obscure,

@@ -20,10 +20,8 @@ class SelectScreen extends StatelessWidget {
 class Select extends StatefulWidget {
   final String currentUserID;
 
-  // String userID = widget.userID;
   Select({this.currentUserID});
-  // String uID = userID;
-  //String userID = widget.userID;
+
   @override
   State<Select> createState() => _SelectState(currentUserID);
 }
