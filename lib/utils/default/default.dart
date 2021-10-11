@@ -5,9 +5,10 @@ class DefaultWidget extends StatelessWidget {
   bool showBackicon;
   Widget widget;
   bool showimage;
+  bool showHome;
   bool showlogout;
-  DefaultWidget(this.widget, this.showimage, this.showlogout,
-      this.showBackicon);
+  DefaultWidget(
+      this.widget, this.showimage, this.showlogout, this.showBackicon,this.showHome);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class DefaultWidget extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Navbar(showlogout, showBackicon),
+              Navbar(showlogout, showBackicon,showHome),
               Padding(
                 padding: const EdgeInsets.symmetric(),
                 child: LayoutBuilder(

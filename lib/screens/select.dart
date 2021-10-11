@@ -11,8 +11,8 @@ class SelectScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          DefaultWidget(select(currentUserID: currentUserID), true, true, true),
+      body: DefaultWidget(
+          select(currentUserID: currentUserID), true, true, true, true),
     );
   }
 }
@@ -47,7 +47,6 @@ class _selectState extends State<select> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print("select : " + widget.currentUserID);
     return Container(
       child: Column(
         children: [
@@ -75,7 +74,8 @@ class _selectState extends State<select> with TickerProviderStateMixin {
                 Navigator.push(
                     (context),
                     MaterialPageRoute(
-                        builder: (context) => SupplierScreen(widget.currentUserID)));
+                        builder: (context) =>
+                            SupplierScreen(widget.currentUserID)));
                 inProgress = false;
               },
               style: ElevatedButton.styleFrom(

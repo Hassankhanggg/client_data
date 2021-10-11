@@ -1,22 +1,28 @@
 import 'package:client_data/authentication/authentication_service.dart';
+import 'package:client_data/screens/users/UserScreen.dart';
+import 'package:client_data/utils/customs/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:provider/src/provider.dart';
 
+BuildContext gcontext;
+
 class Navbar extends StatelessWidget {
-  Navbar(this.showlogout, this.showBackicon);
+  Navbar(this.showlogout, this.showBackicon, this.showHome);
+  bool showHome;
   bool showBackicon;
   bool showlogout;
   @override
   Widget build(BuildContext context) {
+    gcontext = context;
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1200) {
-          return DesktopNavbar(showlogout, showBackicon);
+          return DesktopNavbar(showlogout, showBackicon, showHome);
         } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
-          return DesktopNavbar(showlogout, showBackicon);
+          return DesktopNavbar(showlogout, showBackicon, showHome);
         } else {
-          return MobileNavbar(showlogout, showBackicon);
+          return MobileNavbar(showlogout, showBackicon, showHome);
         }
       },
     );
@@ -26,13 +32,19 @@ class Navbar extends StatelessWidget {
 class DesktopNavbar extends StatelessWidget {
   bool showBackicon;
   final bool showlogout;
+  bool showHome;
 
-  DesktopNavbar(this.showlogout, this.showBackicon)
+  DesktopNavbar(this.showlogout, this.showBackicon, this.showHome)
       : assert(showBackicon != null),
         assert(showlogout != null);
 
   @override
   Widget build(BuildContext context) {
+    void homeFunc() {
+      Navigator.push(
+          (context), MaterialPageRoute(builder: (context) => UserScreen()));
+    }
+
     showBackicon = false;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
@@ -63,10 +75,21 @@ class DesktopNavbar extends StatelessWidget {
             Spacer(),
             Row(
               children: <Widget>[
-                Text(
-                  "Home",
-                  style: TextStyle(color: Colors.white),
-                ),
+                showHome
+                    ? MaterialButton(
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        onPressed: () {
+                          homeFunc();
+                        },
+                        child: Text(
+                          "Home",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : Text(''),
                 SizedBox(
                   width: 30,
                 ),
@@ -113,27 +136,20 @@ class DesktopNavbar extends StatelessWidget {
 class MobileNavbar extends StatelessWidget {
   bool showBackicon;
   bool showlogout;
-  MobileNavbar(this.showlogout, this.showBackicon);
+  bool showHome;
+  MobileNavbar(this.showlogout, this.showBackicon, this.showHome);
 
   @override
   Widget build(BuildContext context) {
+    void homeFunc() {
+      Navigator.push(
+          (context), MaterialPageRoute(builder: (context) => UserScreen()));
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
       child: Container(
         child: Column(children: <Widget>[
-          showBackicon
-              ? IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ))
-              : Text(''),
-          SizedBox(
-            width: 10,
-          ),
           Text(
             "Data center",
             style: TextStyle(
@@ -144,10 +160,21 @@ class MobileNavbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "Home",
-                  style: TextStyle(color: Colors.white),
-                ),
+                showHome
+                    ? MaterialButton(
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        onPressed: () {
+                          homeFunc();
+                        },
+                        child: Text(
+                          "Home",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    : Text(''),
                 SizedBox(
                   width: 30,
                 ),

@@ -7,14 +7,15 @@ import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/client%20utils/modelclient.dart';
 import 'package:flutter/material.dart';
 
-class addClient extends StatelessWidget {
+class AddClient extends StatelessWidget {
   String currentUserID;
-  addClient(this.currentUserID);
+  AddClient(this.currentUserID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: DefaultWidget(addDetailClient(currentUserID), true, true, true),
+      body:
+          DefaultWidget(addDetailClient(currentUserID), true, true, true, true),
     );
   }
 } //store user,table,
@@ -47,7 +48,6 @@ class _addDetailClientState extends State<addDetailClient>
   }
 
   Widget build(BuildContext context) {
-    print("add client : " + widget.currentUserID);
     void func() async {
       inProgress = true;
       var x = DonaloPostClient(
@@ -61,7 +61,13 @@ class _addDetailClientState extends State<addDetailClient>
             (context),
             MaterialPageRoute(
                 builder: (context) => ClientScreen(widget.currentUserID)));
-        inProgress = false;
+        setState(() {
+          name.clear();
+          ports.clear();
+          dest.clear();
+          offer.clear();
+          inProgress = false;
+        });
       });
     }
 
@@ -82,7 +88,7 @@ class _addDetailClientState extends State<addDetailClient>
                     value: controller.value,
                     semanticsLabel: "Linear progress indicator",
                   )
-                : Text("Add new Customer"),
+                : Text("Add new Client"),
             func)
       ],
     );

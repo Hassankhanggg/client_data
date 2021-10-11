@@ -1,4 +1,5 @@
 import 'package:client_data/screens/clients/add_client.dart';
+import 'package:client_data/screens/supplier/supplier.dart';
 import 'package:client_data/utils/client%20utils/PostClient.dart';
 import 'package:client_data/utils/card.dart';
 import 'package:client_data/utils/default/default.dart';
@@ -14,7 +15,8 @@ class ClientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // key: _scaffold,
-      body: DefaultWidget(Client(currentUserID: currentUserID), false, true, true),
+      body: DefaultWidget(
+          Client(currentUserID: currentUserID), false, true, true, true),
     );
   }
 }
@@ -26,36 +28,70 @@ class Client extends StatelessWidget {
   String currentUserID;
   @override
   Widget build(BuildContext context) {
-    print("client : " + currentUserID);
     // Stream<List<DonaloPost>> l;
     double width = MediaQuery.of(context).size.width;
     //double height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         // customButton("Add new customer", func),
-        ElevatedButton(
-          child: const SizedBox(
-              width: 190,
-              height: 50,
-              child: Center(
-                  child: Text(
-                "Add new Client",
+        Row(
+          children: [
+            MaterialButton(
+              color: Colors.purple.shade900,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              onPressed: () {
+                // l = PostData().getPosts();
+                // print(l);
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => AddClient(currentUserID)));
+              },
+              child: Text(
+                "Add  Client",
                 style: TextStyle(color: Colors.white),
-              ))),
-          onPressed: () {
-            // l = PostDataClient().getPosts() as Stream<List<DonaloPostClient>>;
-            // print(l);
-            Navigator.push((context),
-                MaterialPageRoute(builder: (context) => addClient(currentUserID)));
-          },
-          style: ElevatedButton.styleFrom(
-            primary: Colors.purple.shade900,
-            onPrimary: Colors.redAccent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
+              ),
             ),
-          ),
+            SizedBox(
+              width: 10,
+            ),
+            MaterialButton(
+              color: Colors.purple.shade900,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              onPressed: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => ClientScreen(currentUserID)));
+              },
+              child: Text(
+                "Client",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            MaterialButton(
+              color: Colors.purple.shade900,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              onPressed: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => SupplierScreen(currentUserID)));
+              },
+              child: Text(
+                "Supplier",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
         ),
+
         SizedBox(
           height: 10,
         ),
@@ -66,9 +102,7 @@ class Client extends StatelessWidget {
                 height: cards.length * 110.0,
                 child: StreamBuilder(
                   stream: PostDataClient().getPosts(
-                      flag: true,
-                      filter: "userID",
-                      key: currentUserID),
+                      flag: true, filter: "userID", key: currentUserID),
                   builder: (context,
                       AsyncSnapshot<List<DonaloPostClient>> snapshot) {
                     if (snapshot.hasData) {
@@ -92,7 +126,7 @@ class Client extends StatelessWidget {
                                     : width / 1000 * 1.5,
                           ),
                           itemBuilder: (context, index) => ItemCardClient(
-                               currentUserID,
+                                currentUserID,
                                 clientproduct: data[index],
                               ));
                     } else {
@@ -111,7 +145,7 @@ class Client extends StatelessWidget {
   }
 
   void func() {
-    Navigator.push(
-        (globalContext), MaterialPageRoute(builder: (context) => addClient(currentUserID)));
+    Navigator.push((globalContext),
+        MaterialPageRoute(builder: (context) => AddClient(currentUserID)));
   }
 }

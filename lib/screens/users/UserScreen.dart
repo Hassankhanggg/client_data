@@ -18,7 +18,7 @@ class UserScreen extends StatelessWidget {
     // if (email != null) ("email is : " + email);
     return Scaffold(
       // key: _scaffold,
-      body: DefaultWidget(UserScreenClass(), false, true, true),
+      body: DefaultWidget(UserScreenClass(), false, true, true,true),
     );
   }
 }
@@ -79,38 +79,7 @@ class _UserScreenClassState extends State<UserScreenClass> {
     return Column(
       children: [
         // customButton("Add new customer", func),
-        ElevatedButton(
-          child: const SizedBox(
-              width: 190,
-              height: 50,
-              child: Center(
-                  child: Text(
-                "add new",
-                style: TextStyle(color: Colors.white),
-              ))),
-          onPressed: () {
-            // l = PostDataUser().getPosts() as Stream<List<DonaloPostUser>>;
-            // print(l);
-            Navigator.push(
-                (context), MaterialPageRoute(builder: (context) => addUser()));
-          },
-          style: ElevatedButton.styleFrom(
-            primary: Colors.purple.shade900,
-            onPrimary: Colors.redAccent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        CustomButton(
-            // inProgress
-            //     ? CircularProgressIndicator(
-            //         value: controller.value,
-            //         semanticsLabel: "Linear progress indicator",
-            //       )
-            //     :
-            Text("refresh"),
-            funcRefresh)
+ 
         // ElevatedButton(
         //   child: const SizedBox(
         //       width: 190,
@@ -143,7 +112,7 @@ class _UserScreenClassState extends State<UserScreenClass> {
         //     ),
         //   ),
         // ),
-        ,
+        
         SizedBox(
           height: 10,
         ),

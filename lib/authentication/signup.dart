@@ -12,7 +12,7 @@ class Signup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DefaultWidget(_signup(), true, false, true),
+      body: DefaultWidget(_signup(), true, false, true, false),
     );
   }
 }
@@ -80,7 +80,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
             onFieldSubmit: (value) {
               fieldSubmit(value);
             },
-            s: "Enter your Email or Phone Number",
+            s: "Enter your Email",
             validator: (value) {
               if (value == null || value.isEmpty)
                 return "This is Required Field";
@@ -96,9 +96,9 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
             s: "Enter your Password",
             obscure: !isVisible,
             visibleIcon: IconButton(
-              icon: Icon(isVisible ? Icons.visibility: Icons.visibility_off),
+              icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off),
               color: Colors.white,
-              onPressed: (){
+              onPressed: () {
                 setState(() {
                   isVisible = !isVisible;
                 });
@@ -145,10 +145,8 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                       inProgress = true;
                     });
                     create_auth().then((value) async {
+                      print(value); 
                       if (value == "Signed up") {
-                        setState(() {
-                          inProgress = false;
-                        });
                         FirebaseAuth _auth = FirebaseAuth.instance;
                         var x = DonaloPostUser(
                             Name: name.text,
@@ -158,13 +156,16 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                           Navigator.push(
                               (context),
                               MaterialPageRoute(
-                                  builder: (context) => UserScreen()));                                                               
-                                  setState(() {
-                                    name.clear();
-                                  email.clear();
-                                  password.clear();
-                                    inProgress = false;
-                                  });
+                                  builder: (context) => UserScreen()));
+                          setState(() {
+                            name.clear();
+                            email.clear();
+                            password.clear();
+                            inProgress = false;
+                          });
+                        });
+                        setState(() {
+                          inProgress = false;
                         });
                       } else {
                         setState(() {
@@ -206,12 +207,12 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           await PostDataUser().post(x).then((value) {
             Navigator.push((context),
                 MaterialPageRoute(builder: (context) => UserScreen()));
-                setState(() {
-                                    name.clear();
-                                  email.clear();
-                                  password.clear();
-                                    inProgress = false;
-                                  });
+            setState(() {
+              name.clear();
+              email.clear();
+              password.clear();
+              inProgress = false;
+            });
           });
         } else {
           setState(() {
@@ -229,5 +230,10 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     return regex.hasMatch(email);
+  }
+
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

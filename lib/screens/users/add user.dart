@@ -12,7 +12,7 @@ class addUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: DefaultWidget(addDetailUser(), true, true, true),
+      body: DefaultWidget(addDetailUser(), true, true, true,true),
     );
   }
 } //store user,table,
@@ -77,7 +77,7 @@ class _addDetailUserState extends State<addDetailUser>
                     value: controller.value,
                     semanticsLabel: "Linear progress indicator",
                   )
-                : Text("Add new user"),
+                : Text("Add new User"),
             func)
       ],
     );

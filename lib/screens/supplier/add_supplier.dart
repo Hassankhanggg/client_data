@@ -13,7 +13,7 @@ class add_item extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // ignore: missing_required_param
-      body: DefaultWidget(addDetail(currentUserID), true, true, true),
+      body: DefaultWidget(addDetail(currentUserID), true, true, true, true),
     );
   }
 }
@@ -49,7 +49,6 @@ class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     void func() async {
       inProgress = true;
-      print("sup con  : " + controller.toString());
       var x = DonaloPost(
           cusName: name.text,
           offeredRate: int.parse(offer.text),
@@ -57,15 +56,23 @@ class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
           dest: dest.text);
       await PostData().post(x).then((value) {
         print('$value');
-        Navigator.push((context),
-            MaterialPageRoute(builder: (context) => SupplierScreen(widget.currentUserID)));
-        inProgress = false;
+        Navigator.push(
+            (context),
+            MaterialPageRoute(
+                builder: (context) => SupplierScreen(widget.currentUserID)));
+        setState(() {
+          name.clear();
+          ports.clear();
+          dest.clear();
+          offer.clear();
+          inProgress = false;
+        });
       });
     }
 
     return Column(
       children: [
-        AppTextForm(cont: name, s: "Enter your name", obscure: false),
+        AppTextForm(cont: name, s: "Enter Supplier name", obscure: false),
         SizedBox(height: 30),
         AppTextForm(cont: ports, s: "Available ports", obscure: false),
         SizedBox(height: 30),
@@ -80,7 +87,7 @@ class _addDetailState extends State<addDetail> with TickerProviderStateMixin {
                     value: controller.value,
                     semanticsLabel: "Linear progress indicator",
                   )
-                : Text("Add new Customer"),
+                : Text("Add new Supplier"),
             func)
       ],
     );

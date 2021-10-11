@@ -65,26 +65,26 @@ class _ItemCardUserState extends State<ItemCardUser> {
                   // Text("Rate: ${widget.Userproduct.offeredRate.toString()}"),
                   // Spacer(),
                   Spacer(),
-                  IconButton(
-                    icon: Icon(Icons.delete_forever),
-                    color: Colors.white,
-                    highlightColor: Colors.red,
-                    hoverColor: Colors.green,
-                    focusColor: Colors.purple,
-                    splashColor: Colors.yellow,
-                    disabledColor: Colors.amber,
-                    iconSize: 20,
-                    onPressed: () {
-                      setState(() {
-                        PostDataUser().deletePost(widget.Userproduct);
-                        Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) => UserScreen()));
-                        print("delete User");
-                      });
-                    },
-                  ),
+                  // IconButton(
+                  //   icon: Icon(Icons.delete_forever),
+                  //   color: Colors.white,
+                  //   highlightColor: Colors.red,
+                  //   hoverColor: Colors.green,
+                  //   focusColor: Colors.purple,
+                  //   splashColor: Colors.yellow,
+                  //   disabledColor: Colors.amber,
+                  //   iconSize: 20,
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       PostDataUser().deletePost(widget.Userproduct);
+                  //       Navigator.push(
+                  //           (context),
+                  //           MaterialPageRoute(
+                  //               builder: (context) => UserScreen()));
+                  //       print("delete User");
+                  //     });
+                  //   },
+                  // ),
                 ],
               ), //     child: Hero(tag: "${Userproduct.id}",   )
             ),
