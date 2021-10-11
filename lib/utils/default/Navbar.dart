@@ -43,8 +43,8 @@ void showDialogs() {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(32.0))),
         contentPadding: EdgeInsets.only(top: 10.0),
-        title: new Text("Family Communications web app"),
-        content: new Text("   any details about family "),
+        content: new Text(
+            "   Family Communication Ptd Ltd   \n   Trust | Value | Quality    \n    We never compromise !   \n   Worldwide coverage of Wholesale Voice and SMS !    \n"),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           new ElevatedButton(
@@ -59,9 +59,8 @@ void showDialogs() {
   );
 }
 
-
 class DesktopNavbar extends StatelessWidget {
-   bool showBackicon ;
+  bool showBackicon;
   final bool showlogout;
   final bool showHome;
 
@@ -144,7 +143,7 @@ class DesktopNavbar extends StatelessWidget {
                   ),
                   showlogout
                       ? MaterialButton(
-                          color: Colors.pink,
+                          color: Colors.black,
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
@@ -217,6 +216,21 @@ class MobileNavbar extends StatelessWidget {
                         ),
                       )
                     : Text(''),
+                SizedBox(
+                  width: 30,
+                ),
+                MaterialButton(
+                  color: Colors.cyan,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  onPressed: () {
+                    showDialogs();
+                  },
+                  child: Text(
+                    "About Us",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 SizedBox(
                   width: 30,
                 ),

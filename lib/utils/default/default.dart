@@ -14,7 +14,7 @@ class DefaultWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        // alignment: AlignmentGeometry,
+        
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -23,8 +23,8 @@ class DefaultWidget extends StatelessWidget {
                 Colors.black12, Colors.white54, Colors.white60,
                 Colors.white70,
 
-                // Color.fromRGBO(90, 20, 120, 1.0),
-                // Color.fromRGBO(36, 11, 54, 1.0)
+                
+                
               ]),
         ),
         child: SingleChildScrollView(
@@ -65,7 +65,7 @@ class DefaultWidget extends StatelessWidget {
               child: Image.asset(
                 "assets/images/lp_image.png",
                 width: width,
-                //fit: BoxFit.cover,
+                
               ),
             )
           : Text(''),
