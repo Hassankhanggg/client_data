@@ -199,7 +199,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                             semanticsLabel: 'Linear progress indicator',
                           )
                         : Text(
-                            "Already regesterd? Sign in!",
+                            "Already registered? Sign in!",
                             style: TextStyle(color: Colors.white),
                           ))),
             onPressed: () {

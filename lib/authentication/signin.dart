@@ -125,6 +125,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                         password: password.text.trim(),
                       )
                       .then((value) async {
+                    print(value);
                     if (value == "Signed in")
                       Navigator.push(
                           (context),
