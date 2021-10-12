@@ -55,7 +55,7 @@ class _AddDetailState extends State<AddDetail> with TickerProviderStateMixin {
           userID: widget.currentUserID,
           dest: dest.text);
       await PostData().post(x).then((value) {
-        print('$value');
+        print(value);
         Navigator.push(
             (context),
             MaterialPageRoute(

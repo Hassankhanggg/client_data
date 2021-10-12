@@ -34,6 +34,9 @@ class Supplier extends StatelessWidget {
 
     return Column(
       children: [
+        SizedBox(
+          height: 10,
+        ),
         Row(
           children: [
             MaterialButton(

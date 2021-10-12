@@ -15,15 +15,16 @@ class DefaultWidget extends StatelessWidget {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black12,
-                Colors.white54,
-                Colors.white60,
-                Colors.white70,
-              ]),
+          color: Colors.white54,
+          // gradient: LinearGradient(
+          //     begin: Alignment.topCenter,
+          //     end: Alignment.bottomCenter,
+          //     colors: [
+          //       Colors.cyan.shade900,
+          //       Colors.white54,
+          //       Colors.white60,
+          //       Colors.white70,
+          //     ]),
         ),
         child: SingleChildScrollView(
           child: Column(

@@ -73,7 +73,7 @@ class DesktopNavbar extends StatelessWidget {
 
     showBackicon = false;
     return Container(
-      color: Colors.black12,
+      color: Colors.cyan.shade900,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
         child: Container(

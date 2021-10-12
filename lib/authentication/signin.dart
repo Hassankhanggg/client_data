@@ -131,7 +131,10 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                           (context),
                           MaterialPageRoute(
                               builder: (context) => UserScreen()));
-                    else {
+                    else if (value ==
+                        "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
+                      status = 'No Internet';
+                    } else {
                       setState(() {
                         inProgress = false;
                         status = 'Email or Password is not valid';

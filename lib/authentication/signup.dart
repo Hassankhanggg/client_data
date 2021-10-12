@@ -168,6 +168,9 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                         setState(() {
                           inProgress = false;
                         });
+                      } else if (value ==
+                          "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
+                        status = 'No Internet';
                       } else {
                         setState(() {
                           inProgress = false;
