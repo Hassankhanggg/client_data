@@ -28,11 +28,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         home: AuthenticationWrapper(),
         theme: new ThemeData(scaffoldBackgroundColor: Colors.cyan),
-        // darkTheme: ThemeData(
-        //   brightness: Brightness.light,
-        //   /* dark theme settings */
-        // ),
-        // themeMode: ThemeMode.dark,
       ),
     );
   }
