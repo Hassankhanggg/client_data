@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:client_data/authentication/signup.dart';
 import 'package:client_data/utils/customs/customButton.dart';
 import 'package:client_data/utils/user%20utils/PostUser.dart';
@@ -31,7 +29,8 @@ class _UserScreenClassState extends State<UserScreenClass> {
   bool admin = false;
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser.email == "khan@gmail.com") {
+    if (FirebaseAuth.instance.currentUser.email ==
+        "fahad@familycommunication.it") {
       admin = true;
     } else {
       admin = false;

@@ -1,4 +1,3 @@
-import 'package:client_data/authentication/signin.dart';
 import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/customs/appTextForm.dart';
 import 'package:client_data/utils/user%20utils/PostUser.dart';
@@ -197,27 +196,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           SizedBox(
             height: 20,
           ),
-          // ElevatedButton(
-          //   child: SizedBox(
-          //       width: 250,
-          //       height: 50,
-          //       child: Center(
-          //           child: Text(
-          //         "Already registered? Sign in!",
-          //         style: TextStyle(color: Colors.white),
-          //       ))),
-          //   onPressed: () {
-          //     Navigator.push(
-          //         (context), MaterialPageRoute(builder: (context) => Signin()));
-          //   },
-          //   style: ElevatedButton.styleFrom(
-          //     primary: Colors.cyan,
-          //     onPrimary: Colors.redAccent,
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(15),
-          //     ),
-          //   ),
-          // )
+        
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/default/Navbar.dart';
 import 'package:flutter/material.dart';
 
