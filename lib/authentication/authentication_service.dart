@@ -1,5 +1,6 @@
 import 'package:client_data/authentication/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationService {
@@ -15,8 +16,7 @@ class AuthenticationService {
   /// after you called this method if you want to pop all routes.
   Future<void> signOut(BuildContext context) async {
     await _firebaseAuth.signOut();
-    Navigator.push(
-        (context), MaterialPageRoute(builder: (context) => Signin()));
+
   }
 
   /// There are a lot of different ways on how you can do exception handling.
@@ -46,4 +46,37 @@ class AuthenticationService {
       return e.message;
     }
   }
+  Future<String> register(String email, String password) async {
+    // ignore: deprecated_member_use
+    FirebaseApp app = await FirebaseApp.configure(
+        // ignore: deprecated_member_use
+        name: 'Secondary',
+        // ignore: deprecated_member_use
+        options: await FirebaseApp.instance.options);
+    // ignore: deprecated_member_use
+
+            try {
+                    // ignore: deprecated_member_use
+      await     FirebaseAuth.fromApp(app)
+        .createUserWithEmailAndPassword(email: email, password: password);
+      return "Signed in";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  //  Future<UserCredential> register1(String email, String password) async {
+  //   UserCredential userCredential;
+  //   FirebaseApp app = await Firebase.initializeApp(
+  //       name: 'Secondary', options: Firebase.app().options);
+  //   try {
+  //     userCredential = await FirebaseAuth.instanceFor(app: app)
+  //         .createUserWithEmailAndPassword(email: email, password: password);
+  //   } on FirebaseAuthException catch (e) {
+  //     print("User creation failed");
+  //   }
+
+  //   await app.delete();
+  //   return Future.sync(() => userCredential);
+  // }
 }

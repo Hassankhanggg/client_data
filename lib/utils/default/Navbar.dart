@@ -197,6 +197,7 @@ class MobileNavbar extends StatelessWidget {
               children: <Widget>[
                 showHome
                     ? MaterialButton(
+                        minWidth: 0.2,
                         color: Colors.cyan,
                         shape: RoundedRectangleBorder(
                             borderRadius:
@@ -211,9 +212,11 @@ class MobileNavbar extends StatelessWidget {
                       )
                     : Text(''),
                 SizedBox(
-                  width: 10,
+                  width: 3,
                 ),
                 MaterialButton(
+                  // padding: EdgeInsets.all(0.8),
+                  minWidth: 0.2,
                   color: Colors.cyan,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -221,15 +224,16 @@ class MobileNavbar extends StatelessWidget {
                     showDialogs();
                   },
                   child: Text(
-                    "About Us",
+                    "About",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 3,
                 ),
                 showlogout
                     ? MaterialButton(
+                        minWidth: 0.2,
                         color: Colors.pink,
                         shape: RoundedRectangleBorder(
                             borderRadius:
@@ -243,7 +247,7 @@ class MobileNavbar extends StatelessWidget {
                               (Route<dynamic> route) => false);
                         },
                         child: Text(
-                          "logout",
+                          "Logout",
                           style: TextStyle(color: Colors.white),
                         ),
                       )

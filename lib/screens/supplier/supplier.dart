@@ -5,6 +5,7 @@ import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/supplier/item_card.dart';
 import 'package:client_data/utils/supplier/model.dart';
 import 'package:client_data/utils/supplier/post.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SupplierScreen extends StatelessWidget {
@@ -39,28 +40,30 @@ class Supplier extends StatelessWidget {
         ),
         Row(
           children: [
-            MaterialButton(
-              color: Colors.cyan,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
-              onPressed: () {
-                l = PostData().getPosts();
-                print(l);
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => AddSupp(currentUserID)));
-              },
-              child: Text(
-                "Add Supplier",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            (FirebaseAuth.instance.currentUser.uid == currentUserID)
+                ? MaterialButton(
+                    color: Colors.cyan,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                    onPressed: () {
+                      l = PostData().getPosts();
+                      print(l);
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => AddSupp(currentUserID)));
+                    },
+                    child: Text(
+                      "Add Supplier",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                : Text(''),
             SizedBox(
               width: 10,
             ),
             MaterialButton(
-              color: Colors.cyan,
+              color: Colors.cyan[100],
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {

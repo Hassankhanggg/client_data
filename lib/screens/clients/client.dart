@@ -5,6 +5,7 @@ import 'package:client_data/utils/card.dart';
 import 'package:client_data/utils/default/default.dart';
 import 'package:client_data/utils/client%20utils/itemCardClient.dart';
 import 'package:client_data/utils/client%20utils/modelclient.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ClientScreen extends StatelessWidget {
@@ -30,23 +31,26 @@ class Client extends StatelessWidget {
 
     return Column(
       children: [
+        SizedBox(height: 10),
         Row(
           children: [
-            MaterialButton(
-              color: Colors.cyan,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              onPressed: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => AddClient(currentUserID)));
-              },
-              child: Text(
-                "Add  Client",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            (FirebaseAuth.instance.currentUser.uid == currentUserID)
+                ? MaterialButton(
+                    color: Colors.cyan,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    onPressed: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) => AddClient(currentUserID)));
+                    },
+                    child: Text(
+                      " Add  Client ",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                : Text(''),
             SizedBox(
               width: 10,
             ),
@@ -69,7 +73,7 @@ class Client extends StatelessWidget {
               width: 10,
             ),
             MaterialButton(
-              color: Colors.cyan,
+              color: Colors.cyan[100],
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
               onPressed: () {

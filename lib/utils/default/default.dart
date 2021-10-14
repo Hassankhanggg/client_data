@@ -1,3 +1,4 @@
+import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/utils/default/Navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,44 +13,38 @@ class DefaultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white54,
-          // gradient: LinearGradient(
-          //     begin: Alignment.topCenter,
-          //     end: Alignment.bottomCenter,
-          //     colors: [
-          //       Colors.cyan.shade900,
-          //       Colors.white54,
-          //       Colors.white60,
-          //       Colors.white70,
-          //     ]),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Navbar(showlogout, showBackicon, showHome),
-              Padding(
-                padding: const EdgeInsets.symmetric(),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (constraints.maxWidth > 800) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: pageChildren(
-                            constraints.biggest.width / 2, context),
-                      );
-                    } else {
-                      return Column(
-                        children:
-                            pageChildren(constraints.biggest.width, context),
-                      );
-                    }
-                  },
+    return WillPopScope(
+      onWillPop: () async => null,
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white54,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Navbar(showlogout, showBackicon, showHome),
+                Padding(
+                  padding: const EdgeInsets.symmetric(),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      if (constraints.maxWidth > 800) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: pageChildren(
+                              constraints.biggest.width / 2, context),
+                        );
+                      } else {
+                        return Column(
+                          children:
+                              pageChildren(constraints.biggest.width, context),
+                        );
+                      }
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

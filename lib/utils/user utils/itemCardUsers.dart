@@ -1,12 +1,12 @@
 import 'package:client_data/screens/select.dart';
 import 'package:client_data/utils/user%20utils/model%20user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ItemCardUser extends StatefulWidget {
   final DonaloPostUser Userproduct;
   ItemCardUser({
     Key key,
-    
     this.Userproduct,
     DonaloPostUser donaloPostUser,
   }) : super(key: key);
@@ -16,10 +16,8 @@ class ItemCardUser extends StatefulWidget {
 }
 
 class _ItemCardUserState extends State<ItemCardUser> {
-  
   @override
   Widget build(BuildContext context) {
-    
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -29,19 +27,17 @@ class _ItemCardUserState extends State<ItemCardUser> {
                       currentUserID: widget.Userproduct.userID,
                     )));
       },
-      
       child: Column(
-        
-        
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20),
-              
-              
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: (FirebaseAuth.instance.currentUser.uid ==
+                        widget.Userproduct.userID)
+                    ? Colors.blue
+                    : Colors.cyan[100],
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -50,54 +46,19 @@ class _ItemCardUserState extends State<ItemCardUser> {
                     "assets/images/client.jpg",
                     width: 50,
                     height: 40,
-                    
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text("${widget.Userproduct.Name}"),
                   SizedBox(height: 5),
-                  
                   Text(widget.Userproduct.email),
                   SizedBox(height: 5),
-                  
-                  
                   Spacer(),
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
                 ],
-              ), 
+              ),
             ),
           ),
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
         ],
       ),
     );

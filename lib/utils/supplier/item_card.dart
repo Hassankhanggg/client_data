@@ -1,6 +1,7 @@
 import 'package:client_data/screens/supplier/supplier.dart';
 import 'package:client_data/utils/supplier/model.dart';
 import 'package:client_data/utils/supplier/post.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatefulWidget {
@@ -27,7 +28,10 @@ class _ItemCardState extends State<ItemCard> {
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: (FirebaseAuth.instance.currentUser.uid ==
+                        widget.currentUserID)
+                    ? Colors.blue
+                    : Colors.cyan[100],
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -48,27 +52,30 @@ class _ItemCardState extends State<ItemCard> {
                   SizedBox(height: 5),
                   Text("Rate: ${widget.product.offeredRate.toString()}"),
                   Spacer(),
-                  IconButton(
-                    icon: Icon(Icons.delete_forever),
-                    color: Colors.white,
-                    highlightColor: Colors.red,
-                    hoverColor: Colors.green,
-                    focusColor: Colors.purple,
-                    splashColor: Colors.yellow,
-                    disabledColor: Colors.amber,
-                    iconSize: 20,
-                    onPressed: () {
-                      setState(() {
-                        PostData().deletePost(widget.product);
-                        Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    SupplierScreen(widget.currentUserID)));
-                        print("delete");
-                      });
-                    },
-                  ),
+                  (FirebaseAuth.instance.currentUser.uid ==
+                          widget.currentUserID)
+                      ? IconButton(
+                          icon: Icon(Icons.delete_forever),
+                          color: Colors.white,
+                          highlightColor: Colors.red,
+                          hoverColor: Colors.green,
+                          focusColor: Colors.purple,
+                          splashColor: Colors.yellow,
+                          disabledColor: Colors.amber,
+                          iconSize: 20,
+                          onPressed: () {
+                            setState(() {
+                              PostData().deletePost(widget.product);
+                              Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                      builder: (context) => SupplierScreen(
+                                          widget.currentUserID)));
+                              print("delete");
+                            });
+                          },
+                        )
+                      : Text(''),
                 ],
               ),
             ),

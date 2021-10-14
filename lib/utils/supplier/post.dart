@@ -11,7 +11,6 @@ class PostData {
 
   Future<dynamic> post(DonaloPost post) async {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    FirebaseAuth _auth = FirebaseAuth.instance;
     String _key = getRandomString(26);
     final donaloPost = DonaloPost(
       postID: _key,

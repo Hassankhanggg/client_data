@@ -45,10 +45,10 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   TextEditingController password = TextEditingController();
 
   Widget build(BuildContext context) {
-    void func2() {
-      Navigator.push(
-          (context), MaterialPageRoute(builder: (context) => Signup()));
-    }
+    // void func2() {
+    //   Navigator.push(
+    //       (context), MaterialPageRoute(builder: (context) => Signup()));
+    // }
 
     return Form(
       key: _formKey,
@@ -152,15 +152,15 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          CustomButton(
-              Text(
-                "Register a new account",
-                style: TextStyle(color: Colors.white),
-              ),
-              func2),
+          // SizedBox(
+          //   height: 20,
+          // ),
+          // CustomButton(
+          //     Text(
+          //       "Register a new account",
+          //       style: TextStyle(color: Colors.white),
+          //     ),
+          //     func2),
         ],
       ),
     );

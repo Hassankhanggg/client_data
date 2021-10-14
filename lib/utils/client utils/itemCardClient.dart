@@ -1,6 +1,7 @@
 import 'package:client_data/screens/clients/client.dart';
 import 'package:client_data/utils/client%20utils/PostClient.dart';
 import 'package:client_data/utils/client%20utils/modelclient.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ItemCardClient extends StatefulWidget {
@@ -20,7 +21,6 @@ class ItemCardClient extends StatefulWidget {
 class _ItemCardClientState extends State<ItemCardClient> {
   @override
   Widget build(BuildContext context) {
-    print("itemcardclient : " + widget.currentuserID);
     return GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +29,10 @@ class _ItemCardClientState extends State<ItemCardClient> {
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: (FirebaseAuth.instance.currentUser.uid ==
+                        widget.currentuserID)
+                    ? Colors.blue
+                    : Colors.cyan[100],
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -51,27 +54,30 @@ class _ItemCardClientState extends State<ItemCardClient> {
                   Text("Rate: ${widget.clientproduct.offeredRate.toString()}"),
                   Spacer(),
                   Spacer(),
-                  IconButton(
-                    icon: Icon(Icons.delete_forever),
-                    color: Colors.white,
-                    highlightColor: Colors.red,
-                    hoverColor: Colors.green,
-                    focusColor: Colors.purple,
-                    splashColor: Colors.yellow,
-                    disabledColor: Colors.amber,
-                    iconSize: 20,
-                    onPressed: () {
-                      setState(() {
-                        PostDataClient().deletePost(widget.clientproduct);
-                        Navigator.push(
-                            (context),
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ClientScreen(widget.currentuserID)));
-                        print("delete client");
-                      });
-                    },
-                  ),
+                  (FirebaseAuth.instance.currentUser.uid ==
+                          widget.currentuserID)
+                      ? IconButton(
+                          icon: Icon(Icons.delete_forever),
+                          color: Colors.white,
+                          highlightColor: Colors.red,
+                          hoverColor: Colors.green,
+                          focusColor: Colors.purple,
+                          splashColor: Colors.yellow,
+                          disabledColor: Colors.amber,
+                          iconSize: 20,
+                          onPressed: () {
+                            setState(() {
+                              PostDataClient().deletePost(widget.clientproduct);
+                              Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ClientScreen(widget.currentuserID)));
+                              print("delete client");
+                            });
+                          },
+                        )
+                      : Text(''),
                 ],
               ),
             ),

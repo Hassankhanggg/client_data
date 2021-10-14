@@ -146,14 +146,20 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                       inProgress = true;
                     });
                     create_auth().then((value) async {
-                      print(value);
                       if (value == "Signed up") {
                         FirebaseAuth _auth = FirebaseAuth.instance;
                         var x = DonaloPostUser(
                             Name: name.text,
                             userID: _auth.currentUser.uid,
                             email: email.text);
-                        await PostDataUser().post(x).then((value) {
+                        await PostDataUser().post(x).then((value) async {
+                          await context
+                              .read<AuthenticationService>()
+                              .signOut(context);
+                          await context.read<AuthenticationService>().signIn(
+                                email: "fahad@familycommunication.it",
+                                password: "fahad@1999",
+                              );
                           Navigator.push(
                               (context),
                               MaterialPageRoute(
@@ -191,32 +197,27 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-            child: SizedBox(
-                width: 250,
-                height: 50,
-                child: Center(
-                    child: inProgress
-                        ? CircularProgressIndicator(
-                            value: cValue,
-                            semanticsLabel: 'Linear progress indicator',
-                          )
-                        : Text(
-                            "Already registered? Sign in!",
-                            style: TextStyle(color: Colors.white),
-                          ))),
-            onPressed: () {
-              Navigator.push(
-                  (context), MaterialPageRoute(builder: (context) => Signin()));
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Colors.cyan,
-              onPrimary: Colors.redAccent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-          )
+          // ElevatedButton(
+          //   child: SizedBox(
+          //       width: 250,
+          //       height: 50,
+          //       child: Center(
+          //           child: Text(
+          //         "Already registered? Sign in!",
+          //         style: TextStyle(color: Colors.white),
+          //       ))),
+          //   onPressed: () {
+          //     Navigator.push(
+          //         (context), MaterialPageRoute(builder: (context) => Signin()));
+          //   },
+          //   style: ElevatedButton.styleFrom(
+          //     primary: Colors.cyan,
+          //     onPrimary: Colors.redAccent,
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
