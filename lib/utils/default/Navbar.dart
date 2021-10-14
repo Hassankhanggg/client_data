@@ -37,18 +37,14 @@ void showDialogs() {
         backgroundColor: Colors.cyan[100],
         elevation: .4,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(32.0))),
+            borderRadius: BorderRadius.all(Radius.circular(8))),
         contentPadding: EdgeInsets.only(top: 10.0),
-        content: new Text(
-            "   Family Communication Ptd Ltd   \n   Trust | Value | Quality    \n    We never compromise !   \n   Worldwide coverage of Wholesale Voice and SMS !    \n"),
-        actions: <Widget>[
-          new ElevatedButton(
-            child: new Text("Close"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
+        content: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+              "Family Communication Ptd Ltd\nTrust | Value | Quality\nWe never compromise !\nWorldwide coverage of Wholesale Voice and SMS !\n"),
+        ),
+        actions: <Widget>[],
       );
     },
   );

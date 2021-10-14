@@ -52,7 +52,7 @@ class Client extends StatelessWidget {
                   )
                 : Text(''),
             SizedBox(
-              width: 10,
+              width: 50,
             ),
             MaterialButton(
               color: Colors.cyan,
