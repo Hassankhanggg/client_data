@@ -46,11 +46,13 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
   TextEditingController name = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  Future<String> create_auth() async {
-    return await context.read<AuthenticationService>().signUp(
-          email: email.text.trim(),
-          password: password.text.trim(),
+  Future<UserCredential> create_auth() async {
+    await context.read<AuthenticationService>().register(
+          email.text.trim(),
+          password.text.trim(),
         );
+    Navigator.push(
+        (context), MaterialPageRoute(builder: (context) => UserScreen()));
   }
 
   Widget build(BuildContext context) {
@@ -136,7 +138,7 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                                 "Create new User",
                                 style: TextStyle(color: Colors.white),
                               ))),
-                onPressed: () {
+                onPressed: () async {
                   if (!_formkey.currentState.validate()) {
                     status = null;
                     return;
@@ -144,44 +146,45 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
                     setState(() {
                       inProgress = true;
                     });
+
                     create_auth().then((value) async {
-                      if (value == "Signed up") {
-                        FirebaseAuth _auth = FirebaseAuth.instance;
-                        var x = DonaloPostUser(
-                            Name: name.text,
-                            userID: _auth.currentUser.uid,
-                            email: email.text);
-                        await PostDataUser().post(x).then((value) async {
-                          await context
-                              .read<AuthenticationService>()
-                              .signOut(context);
-                          await context.read<AuthenticationService>().signIn(
-                                email: "fahad@familycommunication.it",
-                                password: "fahad@1999",
-                              );
-                          Navigator.push(
-                              (context),
-                              MaterialPageRoute(
-                                  builder: (context) => UserScreen()));
-                          setState(() {
-                            name.clear();
-                            email.clear();
-                            password.clear();
-                            inProgress = false;
-                          });
-                        });
+                      // if (value == "Signed up") {
+                      FirebaseAuth _auth = FirebaseAuth.instance;
+                      var x = DonaloPostUser(
+                          Name: name.text,
+                          userID: _auth.currentUser.uid,
+                          email: email.text);
+                      await PostDataUser().post(x).then((value) async {
+                        // await context
+                        //     .read<AuthenticationService>()
+                        //     .signOut(context);
+                        // await context.read<AuthenticationService>().signIn(
+                        //       email: "fahad@familycommunication.it",
+                        //       password: "fahad@1999",
+                        //     );
+                        // Navigator.push(
+                        //     (context),
+                        //     MaterialPageRoute(
+                        //         builder: (context) => UserScreen()));
                         setState(() {
+                          name.clear();
+                          email.clear();
+                          password.clear();
                           inProgress = false;
                         });
-                      } else if (value ==
-                          "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
-                        status = 'No Internet';
-                      } else {
-                        setState(() {
-                          inProgress = false;
-                          status = 'Email already exists';
-                        });
-                      }
+                      });
+                      setState(() {
+                        inProgress = false;
+                      });
+                      // } else if (value ==
+                      //     "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
+                      //   status = 'No Internet';
+                      // } else {
+                      //   setState(() {
+                      //     inProgress = false;
+                      //     status = 'Email already exists';
+                      //   });
+                      // }
                     });
                   }
                 },
@@ -196,7 +199,6 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
           SizedBox(
             height: 20,
           ),
-        
         ],
       ),
     );
@@ -245,8 +247,8 @@ class __signupState extends State<_signup> with TickerProviderStateMixin {
     return regex.hasMatch(email);
   }
 
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 }

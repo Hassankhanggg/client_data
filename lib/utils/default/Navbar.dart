@@ -16,13 +16,13 @@ class Navbar extends StatelessWidget {
     gcontext = context;
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth > 1200) {
-          return DesktopNavbar(showlogout, showBackicon, showHome);
-        } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
-          return DesktopNavbar(showlogout, showBackicon, showHome);
-        } else {
-          return MobileNavbar(showlogout, showBackicon, showHome);
-        }
+        // if (constraints.maxWidth > 1200) {
+        return DesktopNavbar(showlogout, showBackicon, showHome);
+        // } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
+        //   return DesktopNavbar(showlogout, showBackicon, showHome);
+        // } else {
+        //   return MobileNavbar(showlogout, showBackicon, showHome);
+        // }
       },
     );
   }
@@ -71,10 +71,10 @@ class DesktopNavbar extends StatelessWidget {
     return Container(
       color: Colors.cyan.shade900,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
         child: Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               showBackicon
                   ? IconButton(

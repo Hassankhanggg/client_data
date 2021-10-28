@@ -15,7 +15,6 @@ class AuthenticationService {
   /// after you called this method if you want to pop all routes.
   Future<void> signOut(BuildContext context) async {
     await _firebaseAuth.signOut();
-
   }
 
   /// There are a lot of different ways on how you can do exception handling.
@@ -45,24 +44,43 @@ class AuthenticationService {
       return e.message;
     }
   }
-  Future<String> register(String email, String password) async {
-    // ignore: deprecated_member_use
-    FirebaseApp app = await FirebaseApp.configure(
-        // ignore: deprecated_member_use
-        name: 'Secondary',
-        // ignore: deprecated_member_use
-        options: await FirebaseApp.instance.options);
-    // ignore: deprecated_member_use
 
-            try {
-                    // ignore: deprecated_member_use
-      await     FirebaseAuth.fromApp(app)
-        .createUserWithEmailAndPassword(email: email, password: password);
-      return "Signed in";
+   Future<UserCredential> register(String email, String password) async {
+    UserCredential userCredential;
+    FirebaseApp app = await Firebase.initializeApp(
+        name: 'Secondary', options: Firebase.app().options);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instanceFor(app: app)
+          .createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      // Do something with exception. This try/catch is here to make sure
+      // that even if the user creation fails, app.delete() runs, if is not,
+      // next time Firebase.initializeApp() will fail as the previous one was
+      // not deleted.
     }
+
+    await app.delete();
+    return Future.sync(() => userCredential);
   }
+
+  // Future<String> register(String email, String password) async {
+  //   // ignore: deprecated_member_use
+  //   FirebaseApp app = await FirebaseApp.configure(
+  //       // ignore: deprecated_member_use
+  //       name: 'Secondary',
+  //       // ignore: deprecated_member_use
+  //       options: await FirebaseApp.instance.options);
+  //   // ignore: deprecated_member_use
+
+  //           try {
+  //                   // ignore: deprecated_member_use
+  //     await     FirebaseAuth.fromApp(app)
+  //       .createUserWithEmailAndPassword(email: email, password: password);
+  //     return "Signed in";
+  //   } on FirebaseAuthException catch (e) {
+  //     return e.message;
+  //   }
+  // }
 
   //  Future<UserCredential> register1(String email, String password) async {
   //   UserCredential userCredential;

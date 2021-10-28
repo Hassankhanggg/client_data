@@ -152,6 +152,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///D:/2.Flutter/flutter-sdk/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "get",
       "rootUri": "file:///D:/2.Flutter/flutter-sdk/.pub-cache/hosted/pub.dartlang.org/get-4.3.8",
       "packageUri": "lib/",
@@ -230,6 +236,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "responsive_builder",
+      "rootUri": "file:///D:/2.Flutter/flutter-sdk/.pub-cache/hosted/pub.dartlang.org/responsive_builder-0.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///D:/2.Flutter/flutter-sdk/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -290,7 +302,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-10-14T18:29:19.121105Z",
+  "generated": "2021-10-17T18:14:23.393845Z",
   "generator": "pub",
   "generatorVersion": "2.15.0-82.2.beta"
 }

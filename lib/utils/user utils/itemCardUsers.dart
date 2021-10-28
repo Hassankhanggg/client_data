@@ -32,7 +32,7 @@ class _ItemCardUserState extends State<ItemCardUser> {
         children: <Widget>[
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: (FirebaseAuth.instance.currentUser.uid ==
                         widget.Userproduct.userID)

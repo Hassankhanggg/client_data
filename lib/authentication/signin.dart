@@ -1,8 +1,10 @@
 // import 'dart:js';
 
+import 'package:client_data/authentication/reset.dart';
 import 'package:client_data/screens/users/UserScreen.dart';
 import 'package:client_data/authentication/authentication_service.dart';
 import 'package:client_data/utils/customs/appTextForm.dart';
+import 'package:client_data/utils/customs/customButton.dart';
 import 'package:client_data/utils/default/default.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
@@ -65,7 +67,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
                   return status;
               },
               cont: email,
-              s: "Enter email or phone number",
+              s: "Enter email ",
               obscure: false),
           SizedBox(height: 10),
           AppTextForm(
@@ -150,15 +152,15 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
               ),
             ),
           ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // CustomButton(
-          //     Text(
-          //       "Register a new account",
-          //       style: TextStyle(color: Colors.white),
-          //     ),
-          //     func2),
+          SizedBox(
+            height: 20,
+          ),
+          CustomButton(
+              Text(
+                "Reset password",
+                style: TextStyle(color: Colors.white),
+              ),
+              func2),
         ],
       ),
     );
@@ -172,7 +174,7 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
   bool isEmail(String email) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
+    RegExp regex =  RegExp(pattern);
     return regex.hasMatch(email);
   }
 
@@ -199,6 +201,12 @@ class _formLoginState extends State<_formLogin> with TickerProviderStateMixin {
           });
         }
       });
+    }
+  }
+
+  func2() {
+    {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Reset()));
     }
   }
 }
